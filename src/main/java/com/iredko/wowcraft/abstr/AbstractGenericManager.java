@@ -1,13 +1,15 @@
 package com.iredko.wowcraft.abstr;
 
 import com.iredko.wowcraft.intr.GenericManagerInterface;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao<T>> implements GenericManagerInterface<T>  {
 
-    @Autowired
+    public AbstractGenericManager(T_DAO tDAO) {
+        this.tDAO = tDAO;
+    }
+
     private T_DAO tDAO;
 
     @Override

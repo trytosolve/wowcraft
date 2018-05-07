@@ -13,12 +13,12 @@ public abstract class AbstractGenericDao<T> implements GenericDaoInterface<T> {
 
     private final Class<T> type;
 
-    @PersistenceContext
     private EntityManager entityManager;
 
-    public AbstractGenericDao(Class<T> type) {
+    public AbstractGenericDao(Class<T> type,EntityManager entityManager) {
         super();
         this.type = type;
+        this.entityManager=entityManager;
     }
 
     @Override
