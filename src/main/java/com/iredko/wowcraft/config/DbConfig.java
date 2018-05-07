@@ -26,7 +26,7 @@ public class DbConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.iredko.wowcraft.entities" });
+        em.setPackagesToScan(new String[] { "com.iredko.wowcraft" });
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
