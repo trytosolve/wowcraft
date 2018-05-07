@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 
 @Repository
 public class ReagentDao extends AbstractGenericDao<Reagent> implements ReagentDAOInterface {
-    private EntityManager entityManager;
-    public ReagentDao(EntityManager entityManager) {
-        super(Reagent.class, entityManager);
+
+    public ReagentDao() {
+        super(Reagent.class);
     }
 }
