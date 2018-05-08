@@ -1,12 +1,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <form:form action="${pageContext.request.contextPath}/add_new_reagent" modelAttribute="reagentForm" method="post">
-    <table class="clearfix" align="center">
+    <table>
         <tr>
-            <span class="error"><form:errors path="name"/></span>
-            <span class="error"><form:errors path="itemLvl"/></span>
-            <span class="error"><form:errors path="maxStack"/></span>
-            <span class="error"><form:errors path="cellPrice"/></span>
+            <td><form:errors path="name"/></td>
+            <td><form:errors path="itemLvl"/></td>
+            <td><form:errors path="maxStack"/></td>
+            <td><form:errors path="cellPrice"/></td>
         </tr>
         <tr>
             <td>Name:</td>
