@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(path = "/")
 public class MainController {
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showMainPage(ModelAndView modelAndView) {
         modelAndView.setViewName("mainPage");
         return modelAndView;
