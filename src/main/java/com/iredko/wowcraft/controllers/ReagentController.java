@@ -77,8 +77,10 @@ public class ReagentController {
             modelAndView.setViewName("addReagentPage");
             return modelAndView;
         }
-        reagentManager.update(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
-                reagentForm.getCellPrice()));
+        Reagent editRegent = new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
+                reagentForm.getCellPrice());
+        editRegent.setId(reagentForm.getId());
+        reagentManager.update(editRegent);
         return new ModelAndView("redirect:"+"/reagents");
     }
 }
