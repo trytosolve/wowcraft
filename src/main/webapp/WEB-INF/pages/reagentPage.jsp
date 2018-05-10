@@ -61,7 +61,7 @@
                     <div>${reagent.cellPrice}</div>
                 </td>
                 <td><a href="">edit</a></td>
-                <td><a href="">delete</a></td>
+                <td><a href="reagents/del${reagent.id}">delete</a></td>
             </tr>
         </c:forEach>
 

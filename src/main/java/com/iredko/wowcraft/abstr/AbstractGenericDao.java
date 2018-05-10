@@ -3,6 +3,7 @@ package com.iredko.wowcraft.abstr;
 import com.iredko.wowcraft.intr.GenericDaoInterface;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -12,12 +13,12 @@ public abstract class AbstractGenericDao<T> implements GenericDaoInterface<T> {
 
     private final Class<T> type;
 
+    @PersistenceContext
     private EntityManager entityManager;
 
-    public AbstractGenericDao(Class<T> type,EntityManager entityManager) {
+    public AbstractGenericDao(Class<T> type) {
         super();
         this.type = type;
-        this.entityManager=entityManager;
     }
 
     @Override
@@ -36,7 +37,7 @@ public abstract class AbstractGenericDao<T> implements GenericDaoInterface<T> {
     }
 
     @Override
-    public T findById(Long id) {
+    public T findById(Integer id) {
         return this.entityManager.find(type,id);
     }
 
@@ -51,7 +52,7 @@ public abstract class AbstractGenericDao<T> implements GenericDaoInterface<T> {
     }
 
     @Override
-    public boolean exist(Long id) {
+    public boolean exist(Integer id) {
         T entity = this.entityManager.find(this.type,id);
         return entity != null;
     }

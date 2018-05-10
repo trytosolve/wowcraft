@@ -10,12 +10,12 @@ public interface GenericDaoInterface<T> {
 
     public T update(T object);
 
-    public T findById(Long id);
+    public T findById(Integer id);
 
     public void delete(T object);
 
     public void insert(T object);
 
-    public boolean exist(Long id);
+    public boolean exist(Integer id);
 
 }

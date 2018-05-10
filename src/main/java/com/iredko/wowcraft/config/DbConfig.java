@@ -36,11 +36,6 @@ public class DbConfig {
     }
 
     @Bean
-    public EntityManager entityManager(LocalContainerEntityManagerFactoryBean factory) {
-        return factory.getObject().createEntityManager();
-    }
-
-    @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

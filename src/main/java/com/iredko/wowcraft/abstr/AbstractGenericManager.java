@@ -25,7 +25,7 @@ public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao
     }
 
     @Override
-    public T findById(Long id) {
+    public T findById(Integer id) {
         return  tDAO.findById(id);
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao
     }
 
     @Override
-    public boolean exist(Long id) {
+    public boolean exist(Integer id) {
         return tDAO.exist(id);
     }
 }
