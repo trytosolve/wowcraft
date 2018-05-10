@@ -67,7 +67,7 @@ public class DbConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty(
-                "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+                "hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;
     }

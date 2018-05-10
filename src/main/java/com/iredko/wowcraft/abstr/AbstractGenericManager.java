@@ -2,6 +2,7 @@ package com.iredko.wowcraft.abstr;
 
 import com.iredko.wowcraft.intr.GenericManagerInterface;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao<T>> implements GenericManagerInterface<T>  {
@@ -18,6 +19,7 @@ public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao
     }
 
     @Override
+    @Transactional
     public T update(T object) {
         return tDAO.update(object);
     }
@@ -28,11 +30,13 @@ public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao
     }
 
     @Override
+    @Transactional
     public void delete(T object) {
         tDAO.delete(object);
     }
 
     @Override
+    @Transactional
     public void insert(T object) {
         tDAO.insert(object);
     }

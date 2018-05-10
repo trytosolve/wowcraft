@@ -1,7 +1,6 @@
 package com.iredko.wowcraft.entities;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ReagentForm {
@@ -11,13 +10,13 @@ public class ReagentForm {
     @Size(min=2,max = 15,message = "Name size must be between 2 and 15")
     private String name;
 
-    @NotEmpty
+    @NotNull
     private Integer itemLvl;
 
-    @NotEmpty
+    @NotNull
     private Integer maxStack;
 
-    @NotEmpty
+    @NotNull
     private Integer cellPrice;
 
     public int getId() {

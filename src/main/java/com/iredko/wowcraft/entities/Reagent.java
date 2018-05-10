@@ -11,7 +11,18 @@ public class Reagent {
     private Integer maxStack;
     private Integer cellPrice;
 
+    public Reagent(String name, Integer itemLvl, Integer maxStack, Integer cellPrice) {
+        this.name = name;
+        this.itemLvl = itemLvl;
+        this.maxStack = maxStack;
+        this.cellPrice = cellPrice;
+    }
+
+    public Reagent() {
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
