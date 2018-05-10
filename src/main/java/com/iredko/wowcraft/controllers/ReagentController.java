@@ -3,7 +3,6 @@ package com.iredko.wowcraft.controllers;
 import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.ReagentForm;
 import com.iredko.wowcraft.impl.ReagentManager;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,9 +32,53 @@ public class ReagentController {
         return model;
     }
 
+    @RequestMapping(path = "add_new_reagent",method = RequestMethod.GET)
+    public ModelAndView showAddReagentPage(ModelAndView modelAndView, ReagentForm reagentForm) {
+        modelAndView.addObject("reagentForm", reagentForm);
+        modelAndView.setViewName("addReagentPage");
+        return modelAndView;
+    }
+
+    @RequestMapping(path = "add_new_reagent",method = RequestMethod.POST)
+    public ModelAndView addReagent(@ModelAttribute("reagentForm") @Valid ReagentForm reagentForm,
+                                   BindingResult result, ModelAndView modelAndView) {
+        if (result.hasErrors()) {
+            modelAndView.setViewName("addReagentPage");
+            return modelAndView;
+        }
+        reagentManager.insert(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
+                reagentForm.getCellPrice()));
+        return new ModelAndView("redirect:"+"/reagents");
+    }
+
     @RequestMapping (value = "del{id}", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@PathVariable Integer id,ModelAndView modelAndView) {
         reagentManager.delete(reagentManager.findById(id));
+        return new ModelAndView("redirect:"+"/reagents");
+    }
+
+    @RequestMapping (value = "edit{id}", method = RequestMethod.GET)
+    public ModelAndView showEditReagentPage(@PathVariable Integer id,ModelAndView modelAndView,ReagentForm reagentForm) {
+        Reagent reagent = reagentManager.findById(id);
+        reagentForm.setId(reagent.getId());
+        reagentForm.setName(reagent.getName());
+        reagentForm.setItemLvl(reagent.getItemLvl());
+        reagentForm.setMaxStack(reagent.getMaxStack());
+        reagentForm.setCellPrice(reagent.getCellPrice());
+        modelAndView.addObject(reagentForm);
+        modelAndView.setViewName("editReagentPage");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "edit{id}", method = RequestMethod.POST)
+    public ModelAndView editReagent(@ModelAttribute("reagentForm") @Valid ReagentForm reagentForm,
+                                    BindingResult result,@PathVariable Integer id, ModelAndView modelAndView) {
+        if (result.hasErrors()) {
+            modelAndView.setViewName("addReagentPage");
+            return modelAndView;
+        }
+        reagentManager.update(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
+                reagentForm.getCellPrice()));
         return new ModelAndView("redirect:"+"/reagents");
     }
 }

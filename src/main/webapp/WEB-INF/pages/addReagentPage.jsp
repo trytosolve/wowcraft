@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form:form action="${pageContext.request.contextPath}/add_new_reagent" modelAttribute="reagentForm" method="post">
+<form:form action="${pageContext.request.contextPath}/reagents/add_new_reagent" modelAttribute="reagentForm" method="post">
     <table>
         <tr>
             <td><form:errors path="name"/></td>
