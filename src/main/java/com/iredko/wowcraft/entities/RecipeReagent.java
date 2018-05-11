@@ -2,7 +2,6 @@ package com.iredko.wowcraft.entities;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity(name = "RecipeReagent")
 @Table(name = "recipes_reagents", schema = "craft", catalog = "")
