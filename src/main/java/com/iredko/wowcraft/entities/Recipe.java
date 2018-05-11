@@ -17,7 +17,7 @@ public class Recipe {
     @Column(name = "name", nullable = true, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeReagent> reagents = new ArrayList<>();
 
     public Recipe() {

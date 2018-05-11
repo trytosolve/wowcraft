@@ -1,7 +1,9 @@
 package com.iredko.wowcraft.controllers;
 
 
+import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
+import com.iredko.wowcraft.entities.RecipeReagent;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +36,14 @@ public class RecipeController {
     public ModelAndView showAddReagentPage(ModelAndView modelAndView) {
         modelAndView.setViewName("mainPage");
         return modelAndView;
+    }
+
+    @RequestMapping(value="id{id}",method = RequestMethod.GET)
+    public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
+        Recipe recipe = recipeManager.findById(id);
+        model.addObject("recipe", recipe);
+        model.setViewName("recipeById");
+        return model;
     }
 
     @RequestMapping (value = "del{id}", method = RequestMethod.GET)

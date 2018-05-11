@@ -34,7 +34,7 @@
                     <div>${recipe.id}</div>
                 </td>
                 <td>
-                    <div>${recipe.name}</div>
+                    <a href="recipes/id${recipe.id}"><div>${recipe.name}</div></a>
                 </td>
                 <td><a href="recipes/edit${recipe.id}">edit</a></td>
                 <td><a href="recipes/del${recipe.id}">delete</a></td>

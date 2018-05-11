@@ -29,7 +29,7 @@ public class Reagent {
     @Column(name = "cell_price", nullable = true)
     private Integer cellPrice;
 
-    @OneToMany(mappedBy = "reagent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reagent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeReagent> recipes = new ArrayList<>();
 
     public List<RecipeReagent> getReagents() {

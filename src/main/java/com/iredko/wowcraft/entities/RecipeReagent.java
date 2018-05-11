@@ -10,11 +10,11 @@ public class RecipeReagent {
     @EmbeddedId
     private RecipeReagentId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @MapsId("recipeId")
     private Recipe recipe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @MapsId("reagentId")
     private Reagent reagent;
 

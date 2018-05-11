@@ -63,7 +63,7 @@ public class DbConfig {
         Properties properties = new Properties();
         properties.setProperty(
                 "hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-
+        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
         return properties;
     }
 }
