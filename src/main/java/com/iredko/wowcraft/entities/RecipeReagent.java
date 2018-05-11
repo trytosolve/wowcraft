@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity(name = "RecipeReagent")
 @Table(name = "recipes_reagents", schema = "craft", catalog = "")
-public class RecipeReagent implements Serializable {
+public class RecipeReagent{
 
     @EmbeddedId
     private RecipeReagentId id;
