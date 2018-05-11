@@ -2,7 +2,9 @@ package com.iredko.wowcraft.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "Reagent")
 @Table(name = "reagents", schema = "craft", catalog = "")
@@ -29,16 +31,8 @@ public class Reagent {
     @Column(name = "cell_price", nullable = true)
     private Integer cellPrice;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reagent", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RecipeReagent> recipes = new ArrayList<>();
-
-    public List<RecipeReagent> getReagents() {
-        return recipes;
-    }
-
-    public void setReagents(List<RecipeReagent> reagents) {
-        this.recipes = reagents;
-    }
+    @OneToMany(mappedBy = "reagent")
+    private List<RecipeReagent> recipes = new ArrayList<RecipeReagent>();
 
     public Reagent(String name, Integer itemLvl, Integer maxStack, Integer cellPrice) {
         this.name = name;

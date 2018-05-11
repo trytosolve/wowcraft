@@ -2,20 +2,23 @@ package com.iredko.wowcraft.entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "RecipeReagent")
 @Table(name = "recipes_reagents", schema = "craft", catalog = "")
-public class RecipeReagent {
+public class RecipeReagent implements Serializable {
 
     @EmbeddedId
     private RecipeReagentId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @MapsId("recipeId")
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @MapsId("reagentId")
+    @JoinColumn(name = "reagent_id")
     private Reagent reagent;
 
     @Column(name = "reg_count")
