@@ -1,15 +1,44 @@
 package com.iredko.wowcraft.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name = "Reagent")
 @Table(name = "reagents", schema = "craft", catalog = "")
 public class Reagent {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private int id;
+
+    @Basic
+    @Column(name = "name", nullable = true, length = 45)
     private String name;
+
+    @Basic
+    @Column(name = "item_lvl", nullable = true)
     private Integer itemLvl;
+
+    @Basic
+    @Column(name = "max_stack", nullable = true)
     private Integer maxStack;
+
+    @Basic
+    @Column(name = "cell_price", nullable = true)
     private Integer cellPrice;
+
+    @OneToMany(mappedBy = "reagent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecipeReagent> recipes = new ArrayList<>();
+
+    public List<RecipeReagent> getReagents() {
+        return recipes;
+    }
+
+    public void setReagents(List<RecipeReagent> reagents) {
+        this.recipes = reagents;
+    }
 
     public Reagent(String name, Integer itemLvl, Integer maxStack, Integer cellPrice) {
         this.name = name;
@@ -21,9 +50,7 @@ public class Reagent {
     public Reagent() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+
     public int getId() {
         return id;
     }
@@ -32,8 +59,6 @@ public class Reagent {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 45)
     public String getName() {
         return name;
     }
@@ -42,8 +67,6 @@ public class Reagent {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "item_lvl", nullable = true)
     public Integer getItemLvl() {
         return itemLvl;
     }
@@ -52,8 +75,6 @@ public class Reagent {
         this.itemLvl = itemLvl;
     }
 
-    @Basic
-    @Column(name = "max_stack", nullable = true)
     public Integer getMaxStack() {
         return maxStack;
     }
@@ -62,8 +83,6 @@ public class Reagent {
         this.maxStack = maxStack;
     }
 
-    @Basic
-    @Column(name = "cell_price", nullable = true)
     public Integer getCellPrice() {
         return cellPrice;
     }

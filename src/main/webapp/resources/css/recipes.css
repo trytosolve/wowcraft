@@ -1,0 +1,24 @@
+.recipe_table, td, tr {
+    border: 1px solid black;
+    font-size: medium;
+}
+
+.recipe_table td {
+    width: 70px;
+    text-align: center;
+}
+
+.recipe_table tr {
+    border: 0px;
+}
+
+.new_recipe {
+    width: 100px;
+    height: 30px;
+    background: #9ecf14;
+    border-radius: 5px 5px 5px 5px;
+    margin: 10px;
+    padding-top: 5px;
+    font-size: large;
+    text-align: center;
+}
