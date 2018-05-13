@@ -32,6 +32,7 @@ public class ReagentController {
         return model;
     }
 
+    //TODO если ты посмотришь на урл который выходит - /reagents/add_new_reagent. В самом начале уже написано что это про реагенты. Не надо 2й раз писать что это реагенты)
     @RequestMapping(path = "add_new_reagent",method = RequestMethod.GET)
     public ModelAndView showAddReagentPage(ModelAndView modelAndView, ReagentForm reagentForm) {
         modelAndView.addObject("reagentForm", reagentForm);
@@ -59,7 +60,6 @@ public class ReagentController {
     }
 
     //TODO аналогично - странный урл
-
     @RequestMapping (value = "edit{id}", method = RequestMethod.GET)
     public ModelAndView showEditReagentPage(@PathVariable Integer id,ModelAndView modelAndView,ReagentForm reagentForm) {
         Reagent reagent = reagentManager.findById(id);

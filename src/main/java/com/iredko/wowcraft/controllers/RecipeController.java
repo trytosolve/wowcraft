@@ -1,9 +1,7 @@
 package com.iredko.wowcraft.controllers;
 
 
-import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeReagent;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,7 @@ import java.util.List;
 @RequestMapping(path = "/recipes")
 public class RecipeController {
 
-    private RecipeManager recipeManager;
+    private RecipeManager recipeManager; //TODO начинай привыкать делать те поля который не предполагается в процессе работы менять - делать final
 
     public RecipeController(RecipeManager reagentManager) {
 
@@ -38,14 +36,17 @@ public class RecipeController {
         return modelAndView;
     }
 
+
+    //TODO /recipes/id13 - выглядит странно, правда? Обычно урл для таких страниц выглядит /recipes/13
     @RequestMapping(value="id{id}",method = RequestMethod.GET)
-    public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
+    public ModelAndView getNews(@PathVariable int id, ModelAndView model) { //TODO getNews??? :D
         Recipe recipe = recipeManager.findById(id);
         model.addObject("recipe", recipe);
         model.setViewName("recipeById");
         return model;
     }
 
+    //TODO сокращения в URL - зло. Не del, a полностью delete
     @RequestMapping (value = "del{id}", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@PathVariable Integer id, ModelAndView modelAndView) {
         recipeManager.delete(recipeManager.findById(id));
