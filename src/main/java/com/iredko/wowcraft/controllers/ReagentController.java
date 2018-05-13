@@ -51,15 +51,19 @@ public class ReagentController {
         return new ModelAndView("redirect:"+"/reagents");
     }
 
+    //TODO: то есть url на удаление будет del13, что странно. Обычно делается либо delete?id=13 либо delete/13
     @RequestMapping (value = "del{id}", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@PathVariable Integer id,ModelAndView modelAndView) {
         reagentManager.delete(reagentManager.findById(id));
         return new ModelAndView("redirect:"+"/reagents");
     }
 
+    //TODO аналогично - странный урл
+
     @RequestMapping (value = "edit{id}", method = RequestMethod.GET)
     public ModelAndView showEditReagentPage(@PathVariable Integer id,ModelAndView modelAndView,ReagentForm reagentForm) {
         Reagent reagent = reagentManager.findById(id);
+        //TODO я бы сделал просто отдельный конструктор, собирающий форму из ентити. Типа new ReagentForm(entity);
         reagentForm.setId(reagent.getId());
         reagentForm.setName(reagent.getName());
         reagentForm.setItemLvl(reagent.getItemLvl());
@@ -74,7 +78,7 @@ public class ReagentController {
     public ModelAndView editReagent(@ModelAttribute("reagentForm") @Valid ReagentForm reagentForm,
                                     BindingResult result,@PathVariable Integer id, ModelAndView modelAndView) {
         if (result.hasErrors()) {
-            modelAndView.setViewName("addReagentPage");
+            modelAndView.setViewName("addReagentPage"); // todo почему add?
             return modelAndView;
         }
         Reagent editRegent = new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),

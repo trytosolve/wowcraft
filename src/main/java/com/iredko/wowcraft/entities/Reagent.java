@@ -31,6 +31,7 @@ public class Reagent {
     @Column(name = "cell_price", nullable = true)
     private Integer cellPrice;
 
+    //TODO зачем тебе получать список елементов в таблице recipe_reagent вообще?
     @OneToMany(mappedBy = "reagent")
     private List<RecipeReagent> recipes = new ArrayList<RecipeReagent>();
 
