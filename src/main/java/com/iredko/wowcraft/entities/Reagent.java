@@ -2,12 +2,10 @@ package com.iredko.wowcraft.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity(name = "Reagent")
-@Table(name = "reagents", schema = "craft", catalog = "")
+@Table(name = "reagents", schema = "craft", catalog = "") // TODO схема не должна задаваться в ентити. Каталог тоже
 public class Reagent {
 
     @Id

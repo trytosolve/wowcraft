@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Recipe")
-@Table(name = "recipes", schema = "craft", catalog = "")
+@Table(name = "recipes", schema = "craft", catalog = "") //TODO схема и каталог не должны задаваться в ентити
 public class Recipe {
 
     @Id

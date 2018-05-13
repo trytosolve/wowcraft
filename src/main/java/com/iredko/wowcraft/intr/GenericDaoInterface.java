@@ -1,9 +1,8 @@
 package com.iredko.wowcraft.intr;
 
-import com.iredko.wowcraft.entities.Reagent;
-
 import java.util.List;
 
+//TODO не нужно в имени интерфейса писать Interface. Это и так ясно :)
 public interface GenericDaoInterface<T> {
 
     public List<T> findAll();

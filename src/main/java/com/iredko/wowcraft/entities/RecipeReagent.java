@@ -14,7 +14,7 @@ public class RecipeReagent{
     @ManyToOne
     @MapsId("recipeId")
     @JoinColumn(name = "recipe_id")
-    private Recipe recipe;
+    private Recipe recipe; //TODO : ты не используешь ссылку на рецепт отсюда. Зачем он тебе здесь?
 
     @ManyToOne
     @MapsId("reagentId")
@@ -61,6 +61,7 @@ public class RecipeReagent{
         return regCount;
     }
 
+    //TODO странное имя сеттера
     public void setReg_count(Integer reg_count) {
         this.regCount = reg_count;
     }
