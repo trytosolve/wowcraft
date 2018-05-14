@@ -1,15 +1,20 @@
 package com.iredko.wowcraft.controllers;
 
 
+import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.Recipe;
+import com.iredko.wowcraft.entities.RecipeForm;
+import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -54,7 +59,7 @@ public class RecipeController {
     }
 
 
-    @RequestMapping(value="id{id}",method = RequestMethod.GET)
+    @RequestMapping(value="id{id}",method = RequestMethod.GET) //TODO URL вида /reagents/id123 - странноват, не так ли?
     public ModelAndView getNews(@PathVariable int id, ModelAndView model) { //TODO getNews??? :D
         Recipe recipe = recipeManager.findById(id);
         model.addObject("recipe", recipe);
@@ -62,8 +67,9 @@ public class RecipeController {
         return model;
     }
 
+    //TODO слова в URL не сокращают. Пиши delete полностью
     @RequestMapping (value = "del{id}", method = RequestMethod.GET)
-    public ModelAndView deleteReagent(@PathVariable Integer id, ModelAndView modelAndView) {
+    public ModelAndView deleteReagent(@PathVariable Integer id, ModelAndView modelAndView) { //TODO modelAndView не используется. зачем он здесь?
         recipeManager.delete(recipeManager.findById(id));
         return new ModelAndView("redirect:"+"/recipes");
     }
