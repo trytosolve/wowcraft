@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="new_recipe">
-    <a href="recipe/add_new_recipe">add_new</a>
+    <a href="recipes/add_new_recipe">add_new</a>
 </div>
 <table class="recipe_table">
     <form:form method="post">
