@@ -11,7 +11,7 @@
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
-        <tr id="clone_reagent">
+        <tr class="clone_reagent" rebest='yes'>
             <td>Recipe:</td>
             <td>
                 <form:select path="">
@@ -24,6 +24,7 @@
         </tr>
     </table>
     <div><button class="add" type="button" value="none">Add reagent</button></div>
+    <div><button class="del" type="button" value="none">Del reagent</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>
