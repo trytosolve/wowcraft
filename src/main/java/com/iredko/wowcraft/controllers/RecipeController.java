@@ -1,16 +1,18 @@
 package com.iredko.wowcraft.controllers;
 
 
-import com.iredko.wowcraft.entities.Reagent;
-import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeReagent;
+import com.iredko.wowcraft.entities.*;
+import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,10 +20,11 @@ import java.util.List;
 public class RecipeController {
 
     private RecipeManager recipeManager;
+    private ReagentManager reagentManager;
 
-    public RecipeController(RecipeManager reagentManager) {
-
-        this.recipeManager = reagentManager;
+    public RecipeController(RecipeManager recipeManager, ReagentManager reagentManager) {
+        this.recipeManager = recipeManager;
+        this.reagentManager = reagentManager;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -33,10 +36,26 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "add_new_recipe",method = RequestMethod.GET)
-    public ModelAndView showAddReagentPage(ModelAndView modelAndView) {
-        modelAndView.setViewName("mainPage");
+    public ModelAndView showAddReagentPage(ModelAndView modelAndView, RecipeForm recipeForm) {
+        modelAndView.addObject("recipeFrom", recipeForm);
+        List<Reagent> recipes = reagentManager.findAll();
+        recipeForm.setReagentList(recipes);
+        modelAndView.setViewName("addRecipePage");
         return modelAndView;
     }
+
+    @RequestMapping(path = "add_new_recipe",method = RequestMethod.POST)
+    public ModelAndView addReagent(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
+                                   BindingResult result, ModelAndView modelAndView) {
+        if (result.hasErrors()) {
+            modelAndView.setViewName("addRecipePage");
+            return modelAndView;
+        }
+//        reagentManager.insert(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
+//                reagentForm.getCellPrice()));
+        return new ModelAndView("redirect:"+"/reagents");
+    }
+
 
     @RequestMapping(value="id{id}",method = RequestMethod.GET)
     public ModelAndView getNews(@PathVariable int id, ModelAndView model) {
