@@ -14,7 +14,7 @@
         <tr class="clone_reagent">
             <td>Recipe:</td>
             <td>
-                <form:select id="cboReagent" path="">
+                <form:select id="cboReagents" path="">
                     <c:forEach items="${recipeForm.reagentList}" var="reagent">
                         <form:option class="reagentName" value="none">${reagent.name}</form:option>
                     </c:forEach>

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(path = "/recipes")
@@ -46,6 +48,8 @@ public class RecipeController {
     @RequestMapping(path = "add",method = RequestMethod.POST)
     public ModelAndView addReagent(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
                                    BindingResult result, ModelAndView modelAndView) {
+        Map<String, Integer> myMap = new HashMap<>();
+        modelAndView.addObject("myMap", myMap);
         if (result.hasErrors()) {
             modelAndView.setViewName("addRecipePage");
             return modelAndView;
