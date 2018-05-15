@@ -1,7 +1,7 @@
 package com.iredko.wowcraft.controllers;
 
 import com.iredko.wowcraft.entities.Reagent;
-import com.iredko.wowcraft.entities.ReagentForm;
+import com.iredko.wowcraft.models.ReagentForm;
 import com.iredko.wowcraft.impl.ReagentManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

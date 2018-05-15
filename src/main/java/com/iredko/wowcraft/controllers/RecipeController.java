@@ -3,7 +3,7 @@ package com.iredko.wowcraft.controllers;
 
 import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeForm;
+import com.iredko.wowcraft.models.RecipeForm;
 import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;

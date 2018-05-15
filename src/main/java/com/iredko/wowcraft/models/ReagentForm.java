@@ -1,9 +1,8 @@
-package com.iredko.wowcraft.entities;
+package com.iredko.wowcraft.models;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-//TODO это не entity, его не должно быть в этом пакете
 public class ReagentForm {
 
     private int id;

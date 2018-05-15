@@ -1,4 +1,6 @@
-package com.iredko.wowcraft.entities;
+package com.iredko.wowcraft.models;
+
+import com.iredko.wowcraft.entities.Reagent;
 
 import java.util.List;
 import java.util.Map;
