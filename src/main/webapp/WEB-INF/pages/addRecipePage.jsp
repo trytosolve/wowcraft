@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/reagentCreation.js"/>"></script>
 
-<form:form action="${pageContext.request.contextPath}/recipes/add_new_recipe" modelAttribute="recipeForm"
+<form:form action="${pageContext.request.contextPath}/recipes/add" modelAttribute="recipeForm"
            method="post">
     <table class="recipe_property">
         <tr>
@@ -11,7 +11,7 @@
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
-        <tr class="clone_reagent" rebest='yes'>
+        <tr class="clone_reagent">
             <td>Recipe:</td>
             <td>
                 <form:select path="">

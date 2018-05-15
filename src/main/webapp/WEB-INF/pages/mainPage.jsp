@@ -9,10 +9,14 @@
 <html>
 <head>
     <title>Title</title>
+    <div>
+        <a href="/recipes">Recipes</a>
+    </div>
+    <div>
+        <a href="/reagents">Reagents</a>
+    </div>
 </head>
 <body>
-Всем страницам страница
 
-<!-- добавь сюда ссылки на остальные страницы - очень неудобно идти в код и смотреть куда я могу на самом деле попасть)
 </body>
 </html>

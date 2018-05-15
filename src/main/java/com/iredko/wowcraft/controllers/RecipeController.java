@@ -8,10 +8,7 @@ import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -37,7 +34,7 @@ public class RecipeController {
         return model;
     }
 
-    @RequestMapping(path = "add_new_recipe",method = RequestMethod.GET)
+    @RequestMapping(path = "add",method = RequestMethod.GET)
     public ModelAndView showAddReagentPage(ModelAndView modelAndView, RecipeForm recipeForm) {
         modelAndView.addObject("recipeFrom", recipeForm);
         List<Reagent> recipes = reagentManager.findAll();
@@ -46,7 +43,7 @@ public class RecipeController {
         return modelAndView;
     }
 
-    @RequestMapping(path = "add_new_recipe",method = RequestMethod.POST)
+    @RequestMapping(path = "add",method = RequestMethod.POST)
     public ModelAndView addReagent(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
                                    BindingResult result, ModelAndView modelAndView) {
         if (result.hasErrors()) {
@@ -59,17 +56,16 @@ public class RecipeController {
     }
 
 
-    @RequestMapping(value="id{id}",method = RequestMethod.GET) //TODO URL вида /reagents/id123 - странноват, не так ли?
-    public ModelAndView getNews(@PathVariable int id, ModelAndView model) { //TODO getNews??? :D
+    @RequestMapping(value = "recipe",method = RequestMethod.GET)
+    public ModelAndView getRecipeById(@RequestParam int id, ModelAndView model) {
         Recipe recipe = recipeManager.findById(id);
         model.addObject("recipe", recipe);
         model.setViewName("recipeById");
         return model;
     }
 
-    //TODO слова в URL не сокращают. Пиши delete полностью
-    @RequestMapping (value = "del{id}", method = RequestMethod.GET)
-    public ModelAndView deleteReagent(@PathVariable Integer id, ModelAndView modelAndView) { //TODO modelAndView не используется. зачем он здесь?
+    @RequestMapping (value = "delete", method = RequestMethod.GET)
+    public ModelAndView deleteReagent(@RequestParam Integer id) {
         recipeManager.delete(recipeManager.findById(id));
         return new ModelAndView("redirect:"+"/recipes");
     }

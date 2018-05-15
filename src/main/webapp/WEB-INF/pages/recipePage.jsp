@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="new_recipe">
-    <a href="recipes/add_new_recipe">add_new</a>
+    <a href="recipes/add">add_new</a>
 </div>
 <table class="recipe_table">
     <form:form method="post">
@@ -34,10 +34,10 @@
                     <div>${recipe.id}</div>
                 </td>
                 <td>
-                    <a href="recipes/id${recipe.id}"><div>${recipe.name}</div></a>
+                    <a href="/recipes/recipe?id=${recipe.id}"><div>${recipe.name}</div></a>
                 </td>
-                <td><a href="recipes/edit${recipe.id}">edit</a></td>
-                <td><a href="recipes/del${recipe.id}">delete</a></td>
+                <td><a href="/recipes/edit?id=${recipe.id}">edit</a></td>
+                <td><a href="/recipes/delete?id=${recipe.id}">delete</a></td>
             </tr>
         </c:forEach>
 

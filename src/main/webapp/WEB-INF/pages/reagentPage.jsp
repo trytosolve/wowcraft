@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="new_reagent">
-    <a href="reagents/add_new_reagent">add_new</a>
+    <a href="/reagents/add">add_new</a>
 </div>
 <table class="reagent_table">
     <form:form method="post">
@@ -60,8 +60,8 @@
                 <td>
                     <div>${reagent.cellPrice}</div>
                 </td>
-                <td><a href="reagents/edit${reagent.id}">edit</a></td>
-                <td><a href="reagents/del${reagent.id}">delete</a></td>
+                <td><a href="reagents/edit?id=${reagent.id}">edit</a></td>
+                <td><a href="reagents/delete?id=${reagent.id}">delete</a></td>
             </tr>
         </c:forEach>
 
