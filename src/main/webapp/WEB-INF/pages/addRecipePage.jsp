@@ -14,17 +14,18 @@
         <tr class="clone_reagent">
             <td>Recipe:</td>
             <td>
-                <form:select path="">
+                <form:select id="cboReagent" path="">
                     <c:forEach items="${recipeForm.reagentList}" var="reagent">
-                        <form:option value="reagentName" var="key">${reagent.name}</form:option>
+                        <form:option class="reagentName" value="none">${reagent.name}</form:option>
                     </c:forEach>
                 </form:select>
             </td>
-            <td>count: <form:input id="count" var="value" path="reagentCountMap"/></td>
+            <td>count: <form:input class="count"  path="reagentCountMap"/></td>
         </tr>
     </table>
     <div><button class="add" type="button" value="none">Add reagent</button></div>
     <div><button class="del" type="button" value="none">Del reagent</button></div>
+    <div><button class="test" type="button" value="none">test</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>
