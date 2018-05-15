@@ -20,7 +20,7 @@
                     </c:forEach>
                 </form:select>
             </td>
-            <td>count: <form:input class="count"  path="reagentCountMap"/></td>
+            <td>count: <form:input class="count"  path=""/></td>
         </tr>
     </table>
     <div><button class="add" type="button" value="none">Add reagent</button></div>
