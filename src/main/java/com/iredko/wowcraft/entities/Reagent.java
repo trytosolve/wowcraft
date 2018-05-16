@@ -29,9 +29,9 @@ public class Reagent {
     @Column(name = "cell_price", nullable = true)
     private Integer cellPrice;
 
-//    //TODO зачем тебе получать список елементов в таблице recipe_reagent вообще?
-//    @OneToMany(mappedBy = "reagent",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<RecipeReagent> recipes = new ArrayList<RecipeReagent>();
+    //TODO зачем тебе получать список елементов в таблице recipe_reagent вообще?
+    @OneToMany(mappedBy = "reagent",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<RecipeReagent> recipes = new ArrayList<RecipeReagent>();
 
     public Reagent(String name, Integer itemLvl, Integer maxStack, Integer cellPrice) {
         this.name = name;
@@ -43,13 +43,13 @@ public class Reagent {
     public Reagent() {
     }
 
-//    public List<RecipeReagent> getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(List<RecipeReagent> recipes) {
-//        this.recipes = recipes;
-//    }
+    public List<RecipeReagent> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<RecipeReagent> recipes) {
+        this.recipes = recipes;
+    }
 
     public int getId() {
         return id;
@@ -57,7 +57,7 @@ public class Reagent {
 
     public void setId(int id) {
         this.id = id;
-    }
+}
 
     public String getName() {
         return name;
