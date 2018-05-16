@@ -59,7 +59,7 @@ public class RecipeController {
         for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
             recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
         }
-        recipeManager.insert(recipe);
+        recipeManager.update(recipe);
         return new ModelAndView("redirect:"+"/recipes");
     }
 
