@@ -54,9 +54,13 @@ public class RecipeController {
             modelAndView.setViewName("addRecipePage");
             return modelAndView;
         }
-//        Recipe recipe = new Recipe(recipeForm.getName());
-//        recipe.addReagent();
-        return new ModelAndView("redirect:"+"/reagents");
+        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
+        Recipe recipe = new Recipe(recipeForm.getName());
+        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
+        }
+        recipeManager.insert(recipe);
+        return new ModelAndView("redirect:"+"/recipes");
     }
 
 

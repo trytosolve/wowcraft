@@ -12,7 +12,7 @@ public class RecipeForm {
 
     private List<Reagent> reagentList;
 
-    private Map<String, Integer> reagentCountMap;
+    private Map<Integer, Integer> reagentCountMap;
 
     public int getId() {
         return id;
@@ -38,11 +38,11 @@ public class RecipeForm {
         this.reagentList = reagentList;
     }
 
-    public Map<String, Integer> getReagentCountMap() {
+    public Map<Integer, Integer> getReagentCountMap() {
         return reagentCountMap;
     }
 
-    public void setReagentCountMap(Map<String, Integer> reagentCountMap) {
+    public void setReagentCountMap(Map<Integer, Integer> reagentCountMap) {
         this.reagentCountMap = reagentCountMap;
     }
 }

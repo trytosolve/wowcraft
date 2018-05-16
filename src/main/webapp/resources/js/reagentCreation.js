@@ -37,7 +37,7 @@ $(document).ready(function () {
         var cboReagents = "#cboReagents";
         var count = ".count";
         for (var i = 1; i <= clone_id+1; i++) {
-            var keyForMap = $(cboReagents+" :selected").text();
+            var keyForMap = $(cboReagents+" :selected").val();
             var valueForMap = $(count).val();
             $(count).attr('name', "reagentCountMap['"+keyForMap+"']");
             $(count).attr('value',valueForMap)

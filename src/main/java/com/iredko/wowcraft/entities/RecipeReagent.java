@@ -11,12 +11,12 @@ public class RecipeReagent{
     @EmbeddedId
     private RecipeReagentId id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("recipeId")
     @JoinColumn(name = "recipe_id")
     private Recipe recipe; //TODO : ты не используешь ссылку на рецепт отсюда. Зачем он тебе здесь?
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("reagentId")
     @JoinColumn(name = "reagent_id")
     private Reagent reagent;
@@ -27,7 +27,8 @@ public class RecipeReagent{
     public RecipeReagent() {
     }
 
-    public RecipeReagent(Recipe recipe, Reagent reagent) {
+    public RecipeReagent(Recipe recipe, Reagent reagent,Integer regCount) {
+        this.regCount = regCount;
         this.recipe = recipe;
         this.reagent = reagent;
         this.id = new RecipeReagentId(recipe.getId(),reagent.getId());

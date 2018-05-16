@@ -18,7 +18,7 @@ public class Recipe {
     @Column(name = "name", nullable = true, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<RecipeReagent> reagents = new ArrayList<RecipeReagent>();
 
     public Recipe() {
@@ -28,10 +28,10 @@ public class Recipe {
         this.name = name;
     }
 
-    public void addReagent(Reagent reagent) {
-        RecipeReagent recipeReagent = new RecipeReagent(this, reagent);
+    public void addReagent(Reagent reagent,Integer reg_count) {
+        RecipeReagent recipeReagent = new RecipeReagent(this, reagent,reg_count);
         reagents.add(recipeReagent);
-        reagent.getRecipes().add(recipeReagent);
+//        reagent.getRecipes().add(recipeReagent);
     }
 
     public void removeReagent() {
@@ -41,7 +41,7 @@ public class Recipe {
             if (recipeReagent.getRecipe().equals(this) &&
                     recipeReagent.getReagent().equals(reagents)) {
                 iterator.remove();
-                recipeReagent.getReagent().getRecipes().remove(recipeReagent);
+//                recipeReagent.getReagent().getRecipes().remove(recipeReagent);
                 recipeReagent.setRecipe(null);
                 recipeReagent.setReagent(null);
             }
