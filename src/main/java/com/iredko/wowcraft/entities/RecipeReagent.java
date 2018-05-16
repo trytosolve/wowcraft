@@ -27,10 +27,10 @@ public class RecipeReagent{
     public RecipeReagent() {
     }
 
-    public RecipeReagent(Recipe recipe, Reagent reagent, Integer reg_count) {
+    public RecipeReagent(Recipe recipe, Reagent reagent) {
         this.recipe = recipe;
         this.reagent = reagent;
-        this.regCount = reg_count;
+        this.id = new RecipeReagentId(recipe.getId(),reagent.getId());
     }
 
     public RecipeReagentId getId() {

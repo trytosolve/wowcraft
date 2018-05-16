@@ -43,6 +43,13 @@ public class Reagent {
     public Reagent() {
     }
 
+    public List<RecipeReagent> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<RecipeReagent> recipes) {
+        this.recipes = recipes;
+    }
 
     public int getId() {
         return id;

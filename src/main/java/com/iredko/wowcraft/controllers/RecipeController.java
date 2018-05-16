@@ -3,6 +3,7 @@ package com.iredko.wowcraft.controllers;
 
 import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
+import com.iredko.wowcraft.entities.RecipeReagent;
 import com.iredko.wowcraft.models.RecipeForm;
 import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +54,8 @@ public class RecipeController {
             modelAndView.setViewName("addRecipePage");
             return modelAndView;
         }
-//        reagentManager.insert(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
-//                reagentForm.getCellPrice()));
+//        Recipe recipe = new Recipe(recipeForm.getName());
+//        recipe.addReagent();
         return new ModelAndView("redirect:"+"/reagents");
     }
 

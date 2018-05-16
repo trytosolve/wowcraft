@@ -2,6 +2,7 @@ package com.iredko.wowcraft.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity(name = "Recipe")
@@ -25,6 +26,27 @@ public class Recipe {
 
     public Recipe(String name) {
         this.name = name;
+    }
+
+    public void addReagent(Reagent reagent) {
+        RecipeReagent recipeReagent = new RecipeReagent(this, reagent);
+        reagents.add(recipeReagent);
+        reagent.getRecipes().add(recipeReagent);
+    }
+
+    public void removeReagent() {
+        for(Iterator<RecipeReagent> iterator = reagents.iterator();iterator.hasNext();) {
+            RecipeReagent recipeReagent = iterator.next();
+
+            if (recipeReagent.getRecipe().equals(this) &&
+                    recipeReagent.getReagent().equals(reagents)) {
+                iterator.remove();
+                recipeReagent.getReagent().getRecipes().remove(recipeReagent);
+                recipeReagent.setRecipe(null);
+                recipeReagent.setReagent(null);
+            }
+
+        }
     }
 
     public int getId() {

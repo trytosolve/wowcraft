@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/reagentCreation.js"/>"></script>
 
-<form:form action="${pageContext.request.contextPath}/recipes/add" modelAttribute="recipeForm"
+<form:form id="add_recipe_page" action="${pageContext.request.contextPath}/recipes/add" modelAttribute="recipeForm"
            method="post">
     <table class="recipe_property">
         <tr>
@@ -16,7 +16,7 @@
             <td>
                 <form:select id="cboReagents" path="">
                     <c:forEach items="${recipeForm.reagentList}" var="reagent">
-                        <form:option class="reagentName" value="none">${reagent.name}</form:option>
+                        <form:option class="reagentName" value="${reagent.id}">${reagent.name}</form:option>
                     </c:forEach>
                 </form:select>
             </td>
