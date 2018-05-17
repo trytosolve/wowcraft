@@ -27,21 +27,9 @@
             </tr>
         </c:forEach>
 
-        <%--<tr class="clone_reagent">--%>
-            <%--<td>Recipe:</td>--%>
-            <%--<td>--%>
-                <%--<form:select id="cboReagents" path="">--%>
-                    <%--<c:forEach items="${recipeForm.allReagentList}" var="reagent">--%>
-                        <%--<form:option class="reagentName" value="${reagent.id}">${reagent.name}</form:option>--%>
-                    <%--</c:forEach>--%>
-                <%--</form:select>--%>
-            <%--</td>--%>
-            <%--<td>count: <form:input class="count"  path=""/></td>--%>
-        <%--</tr>--%>
     </table>
     <div><button class="add" type="button" value="none">Add reagent</button></div>
     <div><button class="del" type="button" value="none">Del reagent</button></div>
-    <div><button class="test" type="button" value="none">test</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>
