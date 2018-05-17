@@ -1,7 +1,10 @@
 package com.iredko.wowcraft.models;
 
 import com.iredko.wowcraft.entities.Reagent;
+import com.iredko.wowcraft.entities.Recipe;
+import com.iredko.wowcraft.entities.RecipeReagent;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +13,25 @@ public class RecipeForm {
 
     private String name;
 
-    private List<Reagent> reagentList;
+    private List<Reagent> allReagentList;
 
     private Map<Integer, Integer> reagentCountMap;
+
+    public RecipeForm() {
+    }
+
+    public RecipeForm(Recipe recipe, List<Reagent> allReagentList) {
+        this.id = recipe.getId();
+        this.name  = recipe.getName();
+        this.allReagentList = allReagentList;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (RecipeReagent recipeReagent : recipe.getReagents()) {
+            map.put(recipeReagent.getReagent().getId(), recipeReagent.getReg_count());
+            reagentCountMap = map;
+        }
+    }
+
+
 
     public int getId() {
         return id;
@@ -30,12 +49,12 @@ public class RecipeForm {
         this.name = name;
     }
 
-    public List<Reagent> getReagentList() {
-        return reagentList;
+    public List<Reagent> getAllReagentList() {
+        return allReagentList;
     }
 
-    public void setReagentList(List<Reagent> reagentList) {
-        this.reagentList = reagentList;
+    public void setAllReagentList(List<Reagent> allReagentList) {
+        this.allReagentList = allReagentList;
     }
 
     public Map<Integer, Integer> getReagentCountMap() {

@@ -3,7 +3,6 @@ package com.iredko.wowcraft.controllers;
 
 import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeReagent;
 import com.iredko.wowcraft.models.RecipeForm;
 import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,8 +38,8 @@ public class RecipeController {
     @RequestMapping(path = "add",method = RequestMethod.GET)
     public ModelAndView showAddReagentPage(ModelAndView modelAndView, RecipeForm recipeForm) {
         modelAndView.addObject("recipeFrom", recipeForm);
-        List<Reagent> recipes = reagentManager.findAll();
-        recipeForm.setReagentList(recipes);
+        List<Reagent> reagents = reagentManager.findAll();
+        recipeForm.setAllReagentList(reagents);
         modelAndView.setViewName("addRecipePage");
         return modelAndView;
     }
@@ -70,6 +67,23 @@ public class RecipeController {
         model.addObject("recipe", recipe);
         model.setViewName("recipeById");
         return model;
+    }
+
+    @RequestMapping(path = "edit",method = RequestMethod.GET)
+    public ModelAndView editReagent(@RequestParam int id, ModelAndView modelAndView) {
+        Recipe recipe = recipeManager.findById(id);
+        List<Reagent> reagents = reagentManager.findAll();
+        RecipeForm recipeForm = new RecipeForm(recipe, reagents);
+        modelAndView.addObject("recipeForm", recipeForm);
+
+//        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
+//        Recipe recipe = new Recipe(recipeForm.getName());
+//        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+//            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
+//        }
+//        recipeManager.update(recipe);
+        modelAndView.setViewName("editRecipePage");
+        return modelAndView;
     }
 
     @RequestMapping (value = "delete", method = RequestMethod.GET)

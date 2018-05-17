@@ -72,7 +72,7 @@ public class ReagentController {
     public ModelAndView editReagent(@ModelAttribute("reagentForm") @Valid ReagentForm reagentForm,
                                     BindingResult result,@RequestParam Integer id, ModelAndView modelAndView) {
         if (result.hasErrors()) {
-            modelAndView.setViewName("addReagentPage"); // todo почему add?
+            modelAndView.setViewName("editReagentPage");
             return modelAndView;
         }
         Reagent editRegent = new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
