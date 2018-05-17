@@ -7,10 +7,25 @@
            method="post">
     <table class="recipe_property">
         <tr>
-            <td>Name:</td>
+            <td>Recipe Name:</td>
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
+        <c:forEach items="${recipeForm.reagentCountMap}" var="entry">
+            <tr>
+                <td>Reagent</td>
+                <td>
+                    <form:select id="cboReagents" path="">
+                        <c:forEach items="${recipeForm.allReagentList}" var="reagent">
+                            <option class="reagentName" value="${reagent.id}" ${reagent.id == entry.key ? 'selected' : ''}>
+                                ${reagent.name}</option>
+                        </c:forEach>
+                    </form:select>
+                </td>
+                <td>count: <form:input class="count"  path="" value="${entry.value}"/></td>
+            </tr>
+        </c:forEach>
+
         <div>--------------------------------------------------</div>
         <tr class="clone_reagent">
             <td>Recipe:</td>

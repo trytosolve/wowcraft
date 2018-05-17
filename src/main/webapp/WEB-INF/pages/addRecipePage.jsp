@@ -7,12 +7,12 @@
            method="post">
     <table class="recipe_property">
         <tr>
-            <td>Name:</td>
+            <td>Recipe Name:</td>
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
         <tr class="clone_reagent">
-            <td>Recipe:</td>
+            <td>Reagent:</td>
             <td>
                 <form:select id="cboReagents" path="">
                     <c:forEach items="${recipeForm.allReagentList}" var="reagent">
