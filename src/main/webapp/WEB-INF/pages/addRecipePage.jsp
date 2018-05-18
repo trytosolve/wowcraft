@@ -22,10 +22,11 @@
                 </form:select>
             </td>
             <td>count: <form:input class="count"  path=""/></td>
+            <td><button class="del" type="button" hidden value="none">Del reagent</button></td>
         </tr>
     </table>
     <div><button class="add" type="button" value="none">Add reagent</button></div>
-    <div><button class="del" type="button" value="none">Del reagent</button></div>
+    <div><button class="del1" type="button" value="none">Del reagent</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>

@@ -24,6 +24,7 @@
                     </form:select>
                 </td>
                 <td>count: <form:input class="count"  path="" value="${entry.value}"/></td>
+                <td><button class="del" type="button" value="none">Del reagent</button></td>
             </tr>
         </c:forEach>
 

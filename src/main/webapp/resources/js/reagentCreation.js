@@ -8,15 +8,18 @@ $(document).ready(function () {
         clone.find(".empty_option").attr("selected", "selected");
         clone.find(".count").attr("value", "");
         clone.find(".count").attr('class', 'count' + clone_id);
+        clone.find(".del").removeAttr("hidden");
+        clone.find(".del").attr("class","del"+clone_id);
+        clone.find(".del").attr("value",clone_id)
+        clone.find(".del").attr('value',clone_id);
         clone.appendTo(".recipe_property");
         clone_id = clone_id + 1;
     });
 });
 
 $(document).ready(function () {
-    $(".del").click(function () {
-        clone_id = clone_id - 1;
-        $('.clone_reagent' + clone_id).remove();
+    $('form').on('click','.del2',function () {
+        $('.clone_reagent2').remove();
     });
 });
 
