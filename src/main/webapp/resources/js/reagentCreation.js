@@ -11,13 +11,6 @@ $(document).ready(function () {
         clone.find("#delete").removeAttr("hidden");
         clone.find("#delete").attr("id","delete"+clone_id);
         clone.find("#delete").attr("value",clone_id);
-        // var delBtn = clone.find("#delete");
-        // delBtn.click(function () {
-        //     var buttonId = delBtn.attr('id');
-        //     var selectedId = buttonId.replace('delete', '');
-        //     $('#clone_reagent'+selectedId).remove();
-        // })
-
         clone.appendTo("#recipe_property");
         clone_id = clone_id + 1;
     });
@@ -30,13 +23,6 @@ $(document).ready(function () {
         $('#clone_reagent'+selectedId).remove();
     });
 });
-
-// $('form').on('click','button',function() {
-//     var buttonId = $(this).find('button').attr('id');
-//     var selectedId = buttonId.replace('delete', '');
-//     $('#clone_reagent'+selectedId).remove();
-//     alert(selectedId);
-// })
 
 $(document).ready(function () {
     $('#add_recipe_form').submit(function (event) {
