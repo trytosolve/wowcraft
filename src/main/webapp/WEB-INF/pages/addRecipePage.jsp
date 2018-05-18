@@ -5,28 +5,28 @@
 
 <form:form id="add_recipe_form" action="${pageContext.request.contextPath}/recipes/add" modelAttribute="recipeForm"
            method="post">
-    <table class="recipe_property">
+    <table id="recipe_property">
         <tr>
             <td>Recipe Name:</td>
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
-        <tr class="clone_reagent">
+        <tr id="clone_reagent">
             <td>Reagent:</td>
             <td>
                 <form:select id="cboReagents" path="">
-                    <option class="empty_option" value=""></option>
+                    <option id="empty_option" value=""></option>
                     <c:forEach items="${recipeForm.allReagentList}" var="reagent">
-                        <form:option class="reagentName" value="${reagent.id}">${reagent.name}</form:option>
+                        <form:option id="reagentName" value="${reagent.id}">${reagent.name}</form:option>
                     </c:forEach>
                 </form:select>
             </td>
-            <td>count: <form:input class="count"  path=""/></td>
-            <td><button class="del" type="button" hidden value="none">Del reagent</button></td>
+            <td>count: <form:input id="count"  path=""/></td>
+            <td><button id="delete" type="button" hidden value="none">Del reagent</button></td>
         </tr>
     </table>
-    <div><button class="add" type="button" value="none">Add reagent</button></div>
-    <div><button class="del1" type="button" value="none">Del reagent</button></div>
+    <div><button id="add" type="button" value="none">Add reagent</button></div>
+    <div><button id="del1" type="button" value="none">Del reagent</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>
