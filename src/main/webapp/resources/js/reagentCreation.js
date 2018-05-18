@@ -25,7 +25,7 @@ $(document).ready(function () {
         clone_id = Number(lastIdValue)+1;
         clone.attr('id', 'clone_reagent' + clone_id);
         clone.find("#cboReagents"+lastIdValue).attr('id', 'cboReagents' + clone_id)
-        clone.find("#empty_option"+lastIdValue).attr('id', 'empty_option' + clone_id);
+        clone.find("#empty_option"+lastIdValue).attr('id', 'empty_option' + clone_id);//need fix
         clone.find("#empty_option"+clone_id).attr("selected", "selected");
         clone.find("#count"+lastIdValue).attr("value", "");
         clone.find("#count"+lastIdValue).attr('id', 'count' + clone_id);
