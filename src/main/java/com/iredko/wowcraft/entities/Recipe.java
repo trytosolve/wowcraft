@@ -34,21 +34,6 @@ public class Recipe {
         reagent.getRecipes().add(recipeReagent);
     }
 
-    public void removeReagent() {
-        for(Iterator<RecipeReagent> iterator = reagents.iterator();iterator.hasNext();) {
-            RecipeReagent recipeReagent = iterator.next();
-
-            if (recipeReagent.getRecipe().equals(this) &&
-                    recipeReagent.getReagent().equals(reagents)) {
-                iterator.remove();
-                recipeReagent.getReagent().getRecipes().remove(recipeReagent);
-                recipeReagent.setRecipe(null);
-                recipeReagent.setReagent(null);
-            }
-
-        }
-    }
-
     public int getId() {
         return id;
     }

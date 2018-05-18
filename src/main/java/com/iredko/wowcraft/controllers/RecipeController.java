@@ -3,6 +3,7 @@ package com.iredko.wowcraft.controllers;
 
 import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
+import com.iredko.wowcraft.entities.RecipeReagent;
 import com.iredko.wowcraft.models.RecipeForm;
 import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
@@ -75,15 +76,29 @@ public class RecipeController {
         List<Reagent> reagents = reagentManager.findAll();
         RecipeForm recipeForm = new RecipeForm(recipe, reagents);
         modelAndView.addObject("recipeForm", recipeForm);
-
-//        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
-//        Recipe recipe = new Recipe(recipeForm.getName());
-//        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
-//            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
-//        }
-//        recipeManager.update(recipe);
         modelAndView.setViewName("editRecipePage");
         return modelAndView;
+    }
+
+    @RequestMapping(path = "edit", method = RequestMethod.POST)
+    public ModelAndView saveEditReagent(@RequestParam int id,@ModelAttribute("recipeForm")
+    @Valid RecipeForm recipeForm, BindingResult result, ModelAndView modelAndView) {
+        if (result.hasErrors()) {
+            modelAndView.setViewName("editReagentPage");
+            return modelAndView;
+        }
+        recipeForm.setId(id);
+        Recipe recipe = recipeManager.findById(id);
+//        for (RecipeReagent recipeReagent : recipe.getReagents()) {
+//            recipe.removeReagent(recipeReagent.getReagent());
+//        }
+        recipe.getReagents().clear();
+        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
+        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
+        }
+        recipeManager.update(recipe);
+        return new ModelAndView("redirect:"+"/recipes");
     }
 
     @RequestMapping (value = "delete", method = RequestMethod.GET)
