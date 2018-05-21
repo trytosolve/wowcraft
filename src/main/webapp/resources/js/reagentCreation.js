@@ -66,13 +66,13 @@ $(document).ready(function () {
         event.preventDefault();
         var cboReagents = "#cboReagents";
         var count = "#count";
-        for (var i = 1; i <= clone_id + 1; i++) {
+        for (var i = 0; i <= clone_id; i++) {
+            count = "#count" + i;
+            cboReagents = "#cboReagents" + i;
             var keyForMap = $(cboReagents + " :selected").val();
             var valueForMap = $(count).val();
             $(count).attr('name', "reagentCountMap['" + keyForMap + "']");
             $(count).attr('value', valueForMap)
-            count = "#count" + i;
-            cboReagents = "#cboReagents" + i;
         }
         $(this).unbind('submit').submit();
     });
