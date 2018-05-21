@@ -64,6 +64,10 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#edit_recipe_form').submit(function (event) {
         event.preventDefault();
+        var clone = $("[id^=clone_reagent]:last").clone();
+        var lastId = clone.attr('id');
+        var lastIdValue = lastId.replace('clone_reagent','');
+        clone_id = Number(lastIdValue)+1;
         var cboReagents = "#cboReagents";
         var count = "#count";
         for (var i = 0; i <= clone_id; i++) {
