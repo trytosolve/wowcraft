@@ -16,9 +16,9 @@
                 <td>Reagent</td>
                 <td>
                     <form:select id="cboReagents${status.index}" path="">
-                        <option id="empty_option${status.index}" value="">         </option>
+                        <option id="empty_option" value="">         </option>
                         <c:forEach items="${recipeForm.allReagentList}" var="reagent">
-                            <option id="reagentName${status.index}" value="${reagent.id}" ${reagent.id == entry.key ? 'selected' : ''}>
+                            <option id="reagentName" value="${reagent.id}" ${reagent.id == entry.key ? 'selected' : ''}>
                                 ${reagent.name}</option>
                         </c:forEach>
                     </form:select>
