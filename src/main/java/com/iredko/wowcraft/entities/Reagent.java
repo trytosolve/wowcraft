@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Reagent")
-@Table(name = "reagents", schema = "craft", catalog = "") // TODO схема не должна задаваться в ентити. Каталог тоже
+@Table(name = "reagents")
 public class Reagent {
 
     @Id

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Entity(name = "Recipe")
-@Table(name = "recipes", schema = "craft", catalog = "") //TODO схема и каталог не должны задаваться в ентити
+@Table(name = "recipes")
 public class Recipe {
 
     @Id

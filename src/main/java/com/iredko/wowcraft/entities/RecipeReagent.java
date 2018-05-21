@@ -3,9 +3,8 @@ package com.iredko.wowcraft.entities;
 
 import javax.persistence.*;
 
-//TODO схема не должна задаваться в описании ентити. Это очень плохая практика - имя базы данных по сути своей - часть инфы про коннекшн вцелом
 @Entity(name = "RecipeReagent")
-@Table(name = "recipes_reagents", schema = "craft", catalog = "")
+@Table(name = "recipes_reagents")
 public class RecipeReagent{
 
     @EmbeddedId
