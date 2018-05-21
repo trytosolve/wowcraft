@@ -22,13 +22,13 @@ public class RecipeReagent{
     private Reagent reagent;
 
     @Column(name = "reg_count")
-    private Integer regCount;
+    private Integer reagentQuantity;
 
     public RecipeReagent() {
     }
 
-    public RecipeReagent(Recipe recipe, Reagent reagent,Integer regCount) {
-        this.regCount = regCount;
+    public RecipeReagent(Recipe recipe, Reagent reagent,Integer reagentQuantity) {
+        this.reagentQuantity = reagentQuantity;
         this.recipe = recipe;
         this.reagent = reagent;
         this.id = new RecipeReagentId(recipe.getId(),reagent.getId());
@@ -58,13 +58,12 @@ public class RecipeReagent{
         this.reagent = reagent;
     }
 
-    public Integer getReg_count() {
-        return regCount;
+    public Integer getReagentQuantity() {
+        return reagentQuantity;
     }
 
-    //TODO странное имя сеттера
-    public void setReg_count(Integer reg_count) {
-        this.regCount = reg_count;
+    public void setReagentQuantity(Integer reagentQuantity) {
+        this.reagentQuantity = reagentQuantity;
     }
 
     @Override
@@ -76,14 +75,14 @@ public class RecipeReagent{
 
         if (!recipe.equals(that.recipe)) return false;
         if (!reagent.equals(that.reagent)) return false;
-        return regCount.equals(that.regCount);
+        return reagentQuantity.equals(that.reagentQuantity);
     }
 
     @Override
     public int hashCode() {
         int result = recipe.hashCode();
         result = 31 * result + reagent.hashCode();
-        result = 31 * result + regCount.hashCode();
+        result = 31 * result + reagentQuantity.hashCode();
         return result;
     }
 }

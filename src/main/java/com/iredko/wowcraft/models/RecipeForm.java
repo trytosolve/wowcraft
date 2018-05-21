@@ -26,7 +26,7 @@ public class RecipeForm {
         this.allReagentList = allReagentList;
         Map<Integer, Integer> map = new HashMap<>();
         for (RecipeReagent recipeReagent : recipe.getReagents()) {
-            map.put(recipeReagent.getReagent().getId(), recipeReagent.getReg_count());
+            map.put(recipeReagent.getReagent().getId(), recipeReagent.getReagentQuantity());
             reagentCountMap = map;
         }
     }

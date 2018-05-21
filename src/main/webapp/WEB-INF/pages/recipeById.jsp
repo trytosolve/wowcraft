@@ -7,7 +7,7 @@
     <c:forEach items="${recipe.reagents}" var="reagents">
         <tr>
             <td>${reagents.reagent.name}</td>
-            <td>${reagents.reg_count}</td>
+            <td>${reagents.reagentQuantity}</td>
         </tr>
     </c:forEach>
 
