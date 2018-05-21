@@ -26,7 +26,6 @@
         </tr>
     </table>
     <div><button id="add_for_add_page" type="button" value="none">Add reagent</button></div>
-    <div><button id="del1" type="button" value="none">Del reagent</button></div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>
