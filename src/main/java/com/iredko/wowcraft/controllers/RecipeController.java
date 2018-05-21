@@ -89,14 +89,12 @@ public class RecipeController {
         }
         recipeForm.setId(id);
         Recipe recipe = recipeManager.findById(id);
-//        for (RecipeReagent recipeReagent : recipe.getReagents()) {
-//            recipe.removeReagent(recipeReagent.getReagent());
-//        }
         recipe.getReagents().clear();
         Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
         for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
             recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
         }
+        recipe.setName(recipeForm.getName());
         recipeManager.update(recipe);
         return new ModelAndView("redirect:"+"/recipes");
     }
