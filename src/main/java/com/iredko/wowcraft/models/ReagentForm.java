@@ -1,5 +1,7 @@
 package com.iredko.wowcraft.models;
 
+import com.iredko.wowcraft.entities.Reagent;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,6 +27,17 @@ public class ReagentForm {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public ReagentForm() {
+    }
+
+    public ReagentForm(Reagent reagent) {
+        this.id = reagent.getId();
+        this.name = reagent.getName();
+        this.itemLvl = reagent.getItemLvl();
+        this.maxStack = reagent.getMaxStack();
+        this.cellPrice = reagent.getCellPrice();
     }
 
     public String getName() {

@@ -55,15 +55,10 @@ public class ReagentController {
     }
 
     @RequestMapping (value = "edit", method = RequestMethod.GET)
-    public ModelAndView showEditReagentPage(@RequestParam("id") Integer id, ModelAndView modelAndView, ReagentForm reagentForm) {
+    public ModelAndView showEditReagentPage(@RequestParam("id") Integer id, ModelAndView modelAndView) {
         Reagent reagent = reagentManager.findById(id);
-        //TODO я бы сделал просто отдельный конструктор, собирающий форму из ентити. Типа new ReagentForm(entity);
-        reagentForm.setId(reagent.getId());
-        reagentForm.setName(reagent.getName());
-        reagentForm.setItemLvl(reagent.getItemLvl());
-        reagentForm.setMaxStack(reagent.getMaxStack());
-        reagentForm.setCellPrice(reagent.getCellPrice());
-        modelAndView.addObject(reagentForm);
+        ReagentForm reagentForm = new ReagentForm(reagent);
+        modelAndView.addObject("reagentForm",reagentForm);
         modelAndView.setViewName("editReagentPage");
         return modelAndView;
     }
