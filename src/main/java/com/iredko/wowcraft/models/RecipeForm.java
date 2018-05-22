@@ -4,6 +4,7 @@ import com.iredko.wowcraft.entities.Reagent;
 import com.iredko.wowcraft.entities.Recipe;
 import com.iredko.wowcraft.entities.RecipeReagent;
 
+import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Map;
 public class RecipeForm {
     private int id;
 
+    @Size(min=2,max = 15,message = "Name size must be between 2 and 15")
     private String name;
 
     private List<Reagent> allReagentList;

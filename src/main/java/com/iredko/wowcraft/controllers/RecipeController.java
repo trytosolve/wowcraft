@@ -84,7 +84,7 @@ public class RecipeController {
     public ModelAndView saveEditReagent(@RequestParam int id,@ModelAttribute("recipeForm")
     @Valid RecipeForm recipeForm, BindingResult result, ModelAndView modelAndView) {
         if (result.hasErrors()) {
-            modelAndView.setViewName("editReagentPage");
+            modelAndView.setViewName("editRecipePage");
             return modelAndView;
         }
         recipeForm.setId(id);
