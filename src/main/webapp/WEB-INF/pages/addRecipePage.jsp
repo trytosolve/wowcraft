@@ -1,10 +1,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/reagentCreation.js"/>"></script>
 
 <form:form id="recipe_form" action="${pageContext.request.contextPath}/recipes/add" modelAttribute="recipeForm"
            method="post">
+    <div class="error_red">${optionError}</div>
     <table id="recipe_property">
         <tr>
             <td>Recipe Name:</td>
@@ -21,11 +22,15 @@
                     </c:forEach>
                 </form:select>
             </td>
-            <td>count: <form:input id="count_0"  path=""/></td>
-            <td><button id="delete_0" type="button" hidden value="none">Del reagent</button></td>
+            <td>count: <form:input id="count_0" path=""/></td>
+            <td>
+                <button id="delete_0" type="button" hidden value="none">Del reagent</button>
+            </td>
         </tr>
     </table>
-    <div><button id="add_reagent_button" type="button" value="none">Add reagent</button></div>
+    <div>
+        <button id="add_reagent_button" type="button" value="none">Add reagent</button>
+    </div>
     <div><input type="submit" value="Submit"/></div>
 
 </form:form>

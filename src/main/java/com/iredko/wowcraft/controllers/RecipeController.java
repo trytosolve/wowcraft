@@ -9,6 +9,7 @@ import com.iredko.wowcraft.impl.ReagentManager;
 import com.iredko.wowcraft.impl.RecipeManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,6 +56,13 @@ public class RecipeController {
         Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
         Recipe recipe = new Recipe(recipeForm.getName());
         for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+            if (entry.getKey()==null || entry.getValue()==null) {
+                modelAndView.addObject("optionError", "Set name and quantity for all reagents!");
+                modelAndView.setViewName("addRecipePage");
+                List<Reagent> reagents = reagentManager.findAll();
+                recipeForm.setAllReagentList(reagents);
+                return modelAndView;
+            }
             recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
         }
         recipeManager.update(recipe);
