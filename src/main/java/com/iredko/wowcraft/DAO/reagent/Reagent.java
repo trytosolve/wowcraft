@@ -1,4 +1,6 @@
-package com.iredko.wowcraft.entities;
+package com.iredko.wowcraft.DAO.reagent;
+
+import com.iredko.wowcraft.DAO.recipe_reagent.RecipeReagent;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,18 +28,18 @@ public class Reagent {
     private Integer maxStack;
 
     @Basic
-    @Column(name = "cell_price", nullable = true)
-    private Integer cellPrice;
+    @Column(name = "sell_price", nullable = true)
+    private Integer sellPrice;
 
     //TODO зачем тебе получать список елементов в таблице recipe_reagent вообще?
     @OneToMany(mappedBy = "reagent",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<RecipeReagent> recipes = new ArrayList<RecipeReagent>();
 
-    public Reagent(String name, Integer itemLvl, Integer maxStack, Integer cellPrice) {
+    public Reagent(String name, Integer itemLvl, Integer maxStack, Integer sellPrice) {
         this.name = name;
         this.itemLvl = itemLvl;
         this.maxStack = maxStack;
-        this.cellPrice = cellPrice;
+        this.sellPrice = sellPrice;
     }
 
     public Reagent() {
@@ -83,12 +85,12 @@ public class Reagent {
         this.maxStack = maxStack;
     }
 
-    public Integer getCellPrice() {
-        return cellPrice;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setCellPrice(Integer cellPrice) {
-        this.cellPrice = cellPrice;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
     @Override
@@ -102,7 +104,7 @@ public class Reagent {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (itemLvl != null ? !itemLvl.equals(that.itemLvl) : that.itemLvl != null) return false;
         if (maxStack != null ? !maxStack.equals(that.maxStack) : that.maxStack != null) return false;
-        if (cellPrice != null ? !cellPrice.equals(that.cellPrice) : that.cellPrice != null) return false;
+        if (sellPrice != null ? !sellPrice.equals(that.sellPrice) : that.sellPrice != null) return false;
 
         return true;
     }
@@ -113,7 +115,7 @@ public class Reagent {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (itemLvl != null ? itemLvl.hashCode() : 0);
         result = 31 * result + (maxStack != null ? maxStack.hashCode() : 0);
-        result = 31 * result + (cellPrice != null ? cellPrice.hashCode() : 0);
+        result = 31 * result + (sellPrice != null ? sellPrice.hashCode() : 0);
         return result;
     }
 }

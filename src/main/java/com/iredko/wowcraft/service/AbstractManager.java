@@ -1,13 +1,13 @@
-package com.iredko.wowcraft.abstr;
+package com.iredko.wowcraft.service;
 
-import com.iredko.wowcraft.intr.GenericManagerInterface;
+import com.iredko.wowcraft.DAO.AbstractDAO;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-public abstract class AbstractGenericManager<T, T_DAO extends AbstractGenericDao<T>> implements GenericManagerInterface<T>  {
+public abstract class AbstractManager<T, T_DAO extends AbstractDAO<T>> implements GenericManager<T> {
 
-    public AbstractGenericManager(T_DAO tDAO) {
+    public AbstractManager(T_DAO tDAO) {
         this.tDAO = tDAO;
     }
 

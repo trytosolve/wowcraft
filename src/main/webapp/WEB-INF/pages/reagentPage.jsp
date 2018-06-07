@@ -33,7 +33,7 @@
                 <div>Max Stack</div>
             </td>
             <td>
-                <div>Cell Price</div>
+                <div>Sell Price</div>
             </td>
             <td>
                 <div></div>
@@ -58,7 +58,7 @@
                     <div>${reagent.maxStack}</div>
                 </td>
                 <td>
-                    <div>${reagent.cellPrice}</div>
+                    <div>${reagent.sellPrice}</div>
                 </td>
                 <td><a href="reagents/edit?id=${reagent.id}">edit</a></td>
                 <td><a href="reagents/delete?id=${reagent.id}">delete</a></td>

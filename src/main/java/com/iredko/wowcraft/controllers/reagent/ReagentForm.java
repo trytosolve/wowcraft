@@ -1,6 +1,6 @@
-package com.iredko.wowcraft.models;
+package com.iredko.wowcraft.controllers.reagent;
 
-import com.iredko.wowcraft.entities.Reagent;
+import com.iredko.wowcraft.DAO.reagent.Reagent;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,7 +19,7 @@ public class ReagentForm {
     private Integer maxStack;
 
     @NotNull
-    private Integer cellPrice;
+    private Integer sellPrice;
 
     public int getId() {
         return id;
@@ -37,7 +37,7 @@ public class ReagentForm {
         this.name = reagent.getName();
         this.itemLvl = reagent.getItemLvl();
         this.maxStack = reagent.getMaxStack();
-        this.cellPrice = reagent.getCellPrice();
+        this.sellPrice = reagent.getSellPrice();
     }
 
     public String getName() {
@@ -64,11 +64,11 @@ public class ReagentForm {
         this.maxStack = maxStack;
     }
 
-    public Integer getCellPrice() {
-        return cellPrice;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setCellPrice(Integer cellPrice) {
-        this.cellPrice = cellPrice;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }

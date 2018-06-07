@@ -1,8 +1,8 @@
-package com.iredko.wowcraft.models;
+package com.iredko.wowcraft.controllers.recipe;
 
-import com.iredko.wowcraft.entities.Reagent;
-import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeReagent;
+import com.iredko.wowcraft.DAO.reagent.Reagent;
+import com.iredko.wowcraft.DAO.recipe.Recipe;
+import com.iredko.wowcraft.DAO.recipe_reagent.RecipeReagent;
 
 import javax.validation.constraints.Size;
 import java.util.HashMap;

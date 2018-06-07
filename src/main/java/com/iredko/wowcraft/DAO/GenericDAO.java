@@ -1,8 +1,8 @@
-package com.iredko.wowcraft.intr;
+package com.iredko.wowcraft.DAO;
 
 import java.util.List;
 
-public interface GenericManagerInterface<T> {
+public interface GenericDAO<T> {
 
     public List<T> findAll();
 
@@ -15,4 +15,5 @@ public interface GenericManagerInterface<T> {
     public void insert(T object);
 
     public boolean exist(Integer id);
+
 }

@@ -19,9 +19,9 @@
             <td><form:errors path="maxStack"/>
         </tr>
         <tr>
-            <td>Cell Price:</td>
-            <td><form:input id="cell_price" path="cellPrice"/></td>
-            <td><form:errors path="cellPrice"/></td>
+            <td>Sell Price:</td>
+            <td><form:input id="sell_price" path="sellPrice"/></td>
+            <td><form:errors path="sellPrice"/></td>
         </tr>
         <tr>
             <td colspan="3"><input type="submit" value="Submit"/></td>

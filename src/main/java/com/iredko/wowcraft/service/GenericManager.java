@@ -1,9 +1,8 @@
-package com.iredko.wowcraft.intr;
+package com.iredko.wowcraft.service;
 
 import java.util.List;
 
-//TODO не нужно в имени интерфейса писать Interface. Это и так ясно :)
-public interface GenericDaoInterface<T> {
+public interface GenericManager<T> {
 
     public List<T> findAll();
 
@@ -16,5 +15,4 @@ public interface GenericDaoInterface<T> {
     public void insert(T object);
 
     public boolean exist(Integer id);
-
 }

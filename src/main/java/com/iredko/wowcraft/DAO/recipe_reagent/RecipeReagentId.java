@@ -1,4 +1,4 @@
-package com.iredko.wowcraft.entities;
+package com.iredko.wowcraft.DAO.recipe_reagent;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,6 +1,4 @@
-package com.iredko.wowcraft.abstr;
-
-import com.iredko.wowcraft.intr.GenericDaoInterface;
+package com.iredko.wowcraft.DAO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,14 +7,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public abstract class AbstractGenericDao<T> implements GenericDaoInterface<T> {
+public abstract class AbstractDAO<T> implements GenericDAO<T> {
 
     private final Class<T> type;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public AbstractGenericDao(Class<T> type) {
+    public AbstractDAO(Class<T> type) {
         super();
         this.type = type;
     }
