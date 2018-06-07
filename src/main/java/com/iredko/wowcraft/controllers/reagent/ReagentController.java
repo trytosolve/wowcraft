@@ -1,8 +1,7 @@
-package com.iredko.wowcraft.controllers;
+package com.iredko.wowcraft.controllers.reagent;
 
-import com.iredko.wowcraft.entities.Reagent;
-import com.iredko.wowcraft.models.ReagentForm;
-import com.iredko.wowcraft.impl.ReagentManager;
+import com.iredko.wowcraft.DAO.reagent.Reagent;
+import com.iredko.wowcraft.service.ReagentManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -44,14 +43,14 @@ public class ReagentController {
             return modelAndView;
         }
         reagentManager.insert(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
-                reagentForm.getCellPrice()));
-        return new ModelAndView("redirect:"+"/reagents");
+                reagentForm.getSellPrice()));
+        return new ModelAndView("redirect:/reagents");
     }
 
     @RequestMapping (value = "delete", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@RequestParam("id") Integer id) {
         reagentManager.delete(reagentManager.findById(id));
-        return new ModelAndView("redirect:"+"/reagents");
+        return new ModelAndView("redirect:/reagents");
     }
 
     @RequestMapping (value = "edit", method = RequestMethod.GET)
@@ -71,9 +70,9 @@ public class ReagentController {
             return modelAndView;
         }
         Reagent editRegent = new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
-                reagentForm.getCellPrice());
+                reagentForm.getSellPrice());
         editRegent.setId(reagentForm.getId());
         reagentManager.update(editRegent);
-        return new ModelAndView("redirect:"+"/reagents");
+        return new ModelAndView("redirect:/reagents");
     }
 }
