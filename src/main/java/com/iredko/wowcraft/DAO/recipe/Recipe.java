@@ -1,8 +1,10 @@
-package com.iredko.wowcraft.entities;
+package com.iredko.wowcraft.DAO.recipe;
+
+import com.iredko.wowcraft.DAO.reagent.Reagent;
+import com.iredko.wowcraft.DAO.recipe_reagent.RecipeReagent;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Entity(name = "Recipe")
@@ -28,7 +30,7 @@ public class Recipe {
         this.name = name;
     }
 
-    public void addReagent(Reagent reagent,Integer reg_count) {
+    public void addReagent(Reagent reagent, Integer reg_count) {
         RecipeReagent recipeReagent = new RecipeReagent(this, reagent,reg_count);
         reagents.add(recipeReagent);
         reagent.getRecipes().add(recipeReagent);
