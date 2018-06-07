@@ -1,15 +1,12 @@
-package com.iredko.wowcraft.controllers;
+package com.iredko.wowcraft.controllers.recipe;
 
 
-import com.iredko.wowcraft.entities.Reagent;
-import com.iredko.wowcraft.entities.Recipe;
-import com.iredko.wowcraft.entities.RecipeReagent;
-import com.iredko.wowcraft.models.RecipeForm;
-import com.iredko.wowcraft.impl.ReagentManager;
-import com.iredko.wowcraft.impl.RecipeManager;
+import com.iredko.wowcraft.DAO.reagent.Reagent;
+import com.iredko.wowcraft.DAO.recipe.Recipe;
+import com.iredko.wowcraft.service.ReagentManager;
+import com.iredko.wowcraft.service.RecipeManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,7 +63,7 @@ public class RecipeController {
             recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
         }
         recipeManager.update(recipe);
-        return new ModelAndView("redirect:"+"/recipes");
+        return new ModelAndView("redirect:/recipes");
     }
 
 
@@ -104,12 +101,12 @@ public class RecipeController {
         }
         recipe.setName(recipeForm.getName());
         recipeManager.update(recipe);
-        return new ModelAndView("redirect:"+"/recipes");
+        return new ModelAndView("redirect:/recipes");
     }
 
     @RequestMapping (value = "delete", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@RequestParam Integer id) {
         recipeManager.delete(recipeManager.findById(id));
-        return new ModelAndView("redirect:"+"/recipes");
+        return new ModelAndView("redirect:/recipes");
     }
 }
