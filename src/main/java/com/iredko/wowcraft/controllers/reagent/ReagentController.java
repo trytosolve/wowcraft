@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,8 +23,12 @@ public class ReagentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showReagentPage(ModelAndView model) {
-        List<Reagent> reagents = reagentManager.findAll();
-        model.addObject("allReagents", reagents);
+        List<ReagentModel> reagentModelList = new ArrayList<>();
+        for (Reagent reagent : reagentManager.findAll()) {
+            ReagentModel reagentModel = new ReagentModel(reagent);
+            reagentModelList.add(reagentModel);
+        }
+        model.addObject("allReagents", reagentModelList);
         model.setViewName("reagentPage");
         return model;
     }
@@ -42,8 +47,7 @@ public class ReagentController {
             modelAndView.setViewName("addReagentPage");
             return modelAndView;
         }
-        reagentManager.insert(new Reagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getItemLvl(),
-                reagentForm.getSellPrice()));
+        reagentManager.addReagent(reagentForm.getName(),reagentForm.getItemLvl(),reagentForm.getMaxStack(),reagentForm.getSellPrice());
         return new ModelAndView("redirect:/reagents");
     }
 

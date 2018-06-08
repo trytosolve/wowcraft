@@ -44,13 +44,12 @@ public class RecipeController {
     @RequestMapping(path = "add",method = RequestMethod.POST)
     public ModelAndView addRecipe(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
                                    BindingResult result, ModelAndView modelAndView) {
+        recipeForm.setAllReagentList(reagentManager.findAll());
         if (result.hasErrors()) {
             modelAndView.setViewName("addRecipePage");
             return modelAndView;
         }
-        recipeForm.setAllReagentList(reagentManager.findAll());
-        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
-        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : recipeForm.getReagentCountMap().entrySet()) {
             if (entry.getKey()==null || entry.getValue()==null) {
                 modelAndView.addObject("optionError", "Set name and quantity for all reagents!");
                 modelAndView.setViewName("addRecipePage");
@@ -64,8 +63,7 @@ public class RecipeController {
 
     @RequestMapping(value = "recipe",method = RequestMethod.GET)
     public ModelAndView getRecipeById(@RequestParam int id, ModelAndView model) {
-        Recipe recipe = recipeManager.findById(id);
-        model.addObject("recipe", recipe);
+        model.addObject("recipe", recipeManager.findById(id));
         model.setViewName("recipeById");
         return model;
     }

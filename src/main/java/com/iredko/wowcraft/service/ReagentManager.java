@@ -11,4 +11,9 @@ public class ReagentManager extends AbstractManager<Reagent, ReagentDAO> impleme
     public ReagentManager(ReagentDAO tDAO) {
         super(tDAO);
     }
+
+    public void addReagent(String name,Integer itemLvl, Integer maxStack,Integer sellPrice) {
+        Reagent reagent = new Reagent(name, itemLvl, maxStack, sellPrice);
+        insert(reagent);
+    }
 }
