@@ -28,8 +28,7 @@ public class RecipeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showReagentPage(ModelAndView model) {
-        List<Recipe> recipes = recipeManager.findAll();
-        model.addObject("allRecipes", recipes);
+        model.addObject("allRecipes", recipeManager.findAll());
         model.setViewName("recipePage");
         return model;
     }
@@ -37,32 +36,28 @@ public class RecipeController {
     @RequestMapping(path = "add",method = RequestMethod.GET)
     public ModelAndView showAddReagentPage(ModelAndView modelAndView, RecipeForm recipeForm) {
         modelAndView.addObject("recipeFrom", recipeForm);
-        List<Reagent> reagents = reagentManager.findAll();
-        recipeForm.setAllReagentList(reagents);
+        recipeForm.setAllReagentList(reagentManager.findAll());
         modelAndView.setViewName("addRecipePage");
         return modelAndView;
     }
 
     @RequestMapping(path = "add",method = RequestMethod.POST)
-    public ModelAndView addReagent(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
+    public ModelAndView addRecipe(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
                                    BindingResult result, ModelAndView modelAndView) {
         if (result.hasErrors()) {
             modelAndView.setViewName("addRecipePage");
             return modelAndView;
         }
+        recipeForm.setAllReagentList(reagentManager.findAll());
         Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
-        Recipe recipe = new Recipe(recipeForm.getName());
         for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
             if (entry.getKey()==null || entry.getValue()==null) {
                 modelAndView.addObject("optionError", "Set name and quantity for all reagents!");
                 modelAndView.setViewName("addRecipePage");
-                List<Reagent> reagents = reagentManager.findAll();
-                recipeForm.setAllReagentList(reagents);
                 return modelAndView;
             }
-            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
         }
-        recipeManager.update(recipe);
+        recipeManager.addRecipe(recipeForm.getName(),recipeForm.getReagentCountMap());
         return new ModelAndView("redirect:/recipes");
     }
 
@@ -93,14 +88,15 @@ public class RecipeController {
             return modelAndView;
         }
         recipeForm.setId(id);
-        Recipe recipe = recipeManager.findById(id);
-        recipe.getReagents().clear();
-        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
-        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
-            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
-        }
-        recipe.setName(recipeForm.getName());
-        recipeManager.update(recipe);
+        recipeManager.saveChanges(id,recipeForm.getName(),recipeForm.getReagentCountMap());
+//        Recipe recipe = recipeManager.findById(id);
+//        recipe.getReagents().clear();
+//        Map<Integer,Integer> reagentDetailsMap = recipeForm.getReagentCountMap();
+//        for (Map.Entry<Integer, Integer> entry : reagentDetailsMap.entrySet()) {
+//            recipe.addReagent(reagentManager.findById(entry.getKey()),entry.getValue());
+//        }
+//        recipe.setName(recipeForm.getName());
+//        recipeManager.update(recipe);
         return new ModelAndView("redirect:/recipes");
     }
 
