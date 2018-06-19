@@ -53,7 +53,7 @@ $(document).ready(function () {
             }
             $("[id^=count_]").each(function () {
                 if ($(this).attr("name") != undefined && $(this).attr("name") == ("reagentCountMap['" + keyForMap + "']")) {
-                    alert("Recipe must not contain equals reagents: " + keyForMap + " !");
+                    alert("Recipe must not contain equals reagents!");
                     stopsubmit = true;
                 }
             })
