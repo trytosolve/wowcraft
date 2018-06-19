@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form:form action="${pageContext.request.contextPath}" modelAttribute="reagentForm" method="post">
+<form:form action="${pageContext.request.contextPath}/reagents/add" modelAttribute="reagentForm"
+           method="post">
     <table>
         <tr>
             <td>Name:</td>
@@ -13,7 +14,7 @@
             <td><form:errors path="price"/></td>
         </tr>
         <tr>
-            <td colspan="3"><input type="submit" value="Edit"/></td>
+            <td colspan="3"><input type="submit" value="Submit"/></td>
         </tr>
     </table>
 

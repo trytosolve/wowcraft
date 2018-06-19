@@ -11,15 +11,20 @@
             <td><form:input id="name" path="name"/></td>
             <td><form:errors path="name"/></td>
         </tr>
+        <tr>
+            <td>Recipe Price:</td>
+            <td><form:input id="price" path="price"/></td>
+            <td><form:errors path="price"/></td>
+        </tr>
         <c:forEach items="${recipeForm.reagentCountMap}" var="entry" varStatus="status">
             <tr id="clone_reagent_${status.index}">
                 <td>Reagent</td>
                 <td>
                     <form:select id="cbox_reagents_${status.index}" path="">
                         <option id="empty_option" value="">         </option>
-                        <c:forEach items="${recipeForm.allReagentList}" var="reagent">
+                        <c:forEach items="${allReagents}" var="reagent">
                             <option id="reagent_name" value="${reagent.id}" ${reagent.id == entry.key ? 'selected' : ''}>
-                                ${reagent.name}</option>
+                                    ${reagent.name}</option>
                         </c:forEach>
                     </form:select>
                 </td>
