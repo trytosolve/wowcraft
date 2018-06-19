@@ -47,8 +47,8 @@ $(document).ready(function () {
                 alert("Set all reagents to recipe!");
                 return false;
             }
-            if (!$.isNumeric(valueForMap)) {
-                alert("Set numerical count values: " + valueForMap);
+            if (!$.isNumeric(valueForMap)&&valueForMap!= undefined) {
+                alert("Set numerical count values: " + valueForMap + " id:"+ keyForMap);
                 return false;
             }
             $("[id^=count_]").each(function () {
