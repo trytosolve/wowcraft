@@ -14,7 +14,7 @@
     <title>Reagents</title>
 </head>
 <body>
-<div>${usageError}:</div>
+<div>${usageError}</div>
 <c:forEach items="${usagesList}" var="recipe">
     <span>${recipe.name}</span>
     <span>|</span>
@@ -53,8 +53,8 @@
                 <td>
                     <div>${reagent.price}</div>
                 </td>
-                <td><a href="reagents/edit?id=${reagent.id}">edit</a></td>
-                <td><a href="reagents/delete?id=${reagent.id}">delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/reagents/edit?id=${reagent.id}">edit</a></td>
+                <td><a href="${pageContext.request.contextPath}/reagents/delete?id=${reagent.id}">delete</a></td>
             </tr>
         </c:forEach>
     </form:form>

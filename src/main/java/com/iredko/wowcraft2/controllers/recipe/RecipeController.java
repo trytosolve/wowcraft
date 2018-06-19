@@ -43,12 +43,16 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "add", method = RequestMethod.POST)
-    public ModelAndView submitNewRecipe(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm, BindingResult result) {
+    public ModelAndView submitNewRecipe(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm, BindingResult result,
+                                        ModelAndView modelAndView) {
         if (result.hasErrors()) {
-            return new ModelAndView("newRecipePage");
+            modelAndView.addObject("allReagents", reagentManager.findAll());
+            modelAndView.setViewName("newRecipePage");
+            return modelAndView;
         }
         recipeManager.merge(RecipeInfoModel.fromForm(recipeForm,reagentManager.findAll()));
-        return new ModelAndView("redirect:/recipes");
+        modelAndView.setViewName("redirect:/recipes");
+        return modelAndView;
     }
 
     @RequestMapping(value = "recipe",method = RequestMethod.GET)
@@ -68,9 +72,11 @@ public class RecipeController {
 
     @RequestMapping(path = "edit",method = RequestMethod.POST)
     public ModelAndView editRecipe(@RequestParam Integer id, @ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
-                                   BindingResult result) {
+                                   BindingResult result,ModelAndView modelAndView) {
         if (result.hasErrors()) {
-            return new ModelAndView("editRecipePage");
+            modelAndView.addObject("allReagents", reagentManager.findAll());
+            modelAndView.setViewName("editRecipePage");
+            return modelAndView;
         }
         recipeManager.merge(RecipeInfoModel.fromForm(recipeForm,reagentManager.findAll()));
         return new ModelAndView("redirect:/recipes");
