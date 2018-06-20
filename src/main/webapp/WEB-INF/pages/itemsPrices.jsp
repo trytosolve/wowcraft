@@ -4,38 +4,33 @@
 <link href="<c:url value="/resources/css/recipes.css" />" rel="stylesheet">
 <html>
 <head>
-    <title>Reagents</title>
+    <title>Items</title>
 </head>
 <body>
-<div class="new_recipe">
-    <a href="recipes/add">add_new</a>
-</div>
 <table class="recipe_table">
     <form:form method="post">
         <tr>
             <td>
-                <div>Id</div>
-            </td>
-            <td>
                 <div>Name</div>
             </td>
             <td>
-                <div>Sell Price</div>
+                <div>Buy Price</div>
+            </td>
+            <td>
+                <div>Craft Price</div>
             </td>
         </tr>
-        <c:forEach items="${allRecipes}" var="recipe">
+        <c:forEach items="${items}" var="item">
             <tr>
                 <td>
-                    <div>${recipe.id}</div>
+                    <div>${item.name}</div>
                 </td>
                 <td>
-                    <a href="/recipes/recipe?id=${recipe.id}"><div>${recipe.name}</div></a>
+                    <div>${item.buyPrice}</div>
                 </td>
                 <td>
-                    <div>${recipe.sellPrice}</div>
+                    <div>${item.craftPrice}</div>
                 </td>
-                <td><a href="${pageContext.request.contextPath}/recipes/edit?id=${recipe.id}">edit</a></td>
-                <td><a href="${pageContext.request.contextPath}/recipes/delete?id=${recipe.id}">delete</a></td>
             </tr>
         </c:forEach>
     </form:form>

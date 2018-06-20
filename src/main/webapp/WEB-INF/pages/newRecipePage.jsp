@@ -13,9 +13,9 @@
             <td><form:errors path="name"/></td>
         </tr>
         <tr>
-            <td>Recipe Price:</td>
-            <td><form:input id="price" path="price"/></td>
-            <td><form:errors path="price"/></td>
+            <td>Sell Price:</td>
+            <td><form:input id="sellPrice" path="sellPrice"/></td>
+            <td><form:errors path="sellPrice"/></td>
         </tr>
         <tr id="clone_reagent_0">
             <td>Reagent:</td>

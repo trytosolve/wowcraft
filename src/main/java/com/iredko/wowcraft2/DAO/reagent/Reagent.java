@@ -19,19 +19,19 @@ public class Reagent {
     private String name;
 
     @Column(name="sell_price")
-    private Integer price;
+    private Integer sellPrice;
 
     public Reagent() {
     }
 
-    public Reagent(Integer id,String name, Integer price) {
+    public Reagent(Integer id,String name, Integer sellPrice) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public static Reagent fromModel(ReagentInfoModel reagentInfoModel) {
-        return new Reagent(reagentInfoModel.getId(),reagentInfoModel.getName(),reagentInfoModel.getPrice());
+        return new Reagent(reagentInfoModel.getId(),reagentInfoModel.getName(),reagentInfoModel.getSellPrice());
     }
 
     public Integer getId() {
@@ -50,11 +50,11 @@ public class Reagent {
         this.name = name;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }

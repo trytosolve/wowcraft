@@ -4,12 +4,9 @@
 <link href="<c:url value="/resources/css/recipes.css" />" rel="stylesheet">
 <html>
 <head>
-    <title>Reagents</title>
+    <title>Lots</title>
 </head>
 <body>
-<div class="new_recipe">
-    <a href="recipes/add">add_new</a>
-</div>
 <table class="recipe_table">
     <form:form method="post">
         <tr>
@@ -20,25 +17,27 @@
                 <div>Name</div>
             </td>
             <td>
-                <div>Sell Price</div>
+                <div>Lot Price</div>
             </td>
         </tr>
-        <c:forEach items="${allRecipes}" var="recipe">
+        <c:forEach items="${lots}" var="lot">
             <tr>
                 <td>
-                    <div>${recipe.id}</div>
+                    <div>${lot.id}</div>
                 </td>
                 <td>
-                    <a href="/recipes/recipe?id=${recipe.id}"><div>${recipe.name}</div></a>
+                    <div>${lot.name}</div>
                 </td>
                 <td>
-                    <div>${recipe.sellPrice}</div>
+                    <div>${lot.price}</div>
                 </td>
-                <td><a href="${pageContext.request.contextPath}/recipes/edit?id=${recipe.id}">edit</a></td>
-                <td><a href="${pageContext.request.contextPath}/recipes/delete?id=${recipe.id}">delete</a></td>
             </tr>
         </c:forEach>
     </form:form>
+
+    <div>
+        <a href="${pageContext.request.contextPath}/lots/add">Add Lot</a>
+    </div>
 </table>
 </body>
 </html>

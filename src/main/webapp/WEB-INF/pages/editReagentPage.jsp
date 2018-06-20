@@ -9,8 +9,8 @@
         </tr>
         <tr>
             <td>Sell Price:</td>
-            <td><form:input id="sell_price" path="price"/></td>
-            <td><form:errors path="price"/></td>
+            <td><form:input id="sell_price" path="sellPrice"/></td>
+            <td><form:errors path="sellPrice"/></td>
         </tr>
         <tr>
             <td colspan="3"><input type="submit" value="Edit"/></td>

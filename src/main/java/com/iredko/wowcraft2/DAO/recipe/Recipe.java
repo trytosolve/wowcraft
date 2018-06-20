@@ -34,15 +34,15 @@ public class Recipe {
     List<RecipeReagent> reagents = new ArrayList<>();
 
     @Column(name = "price")
-    private Integer price;
+    private Integer sellPrice;
 
     public Recipe() {
     }
 
-    public Recipe(Integer id, String name, Integer price) {
+    public Recipe(Integer id, String name, Integer sellPrice) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public void addReagent(Reagent reagent, Integer count) {
@@ -51,7 +51,7 @@ public class Recipe {
     }
 
     public static Recipe fromModel(RecipeInfoModel recipeInfoModel) {
-        Recipe recipe = new Recipe(recipeInfoModel.getId(), recipeInfoModel.getName(), recipeInfoModel.getPrice());
+        Recipe recipe = new Recipe(recipeInfoModel.getId(), recipeInfoModel.getName(), recipeInfoModel.getSellPrice());
         List<RecipeReagent> recipeReagents = new ArrayList<>();
         for (Map.Entry<ReagentInfoModel, Integer> entry : recipeInfoModel.getReagenCountMap().entrySet()) {
             recipe.addReagent(Reagent.fromModel(entry.getKey()), entry.getValue());
@@ -83,11 +83,11 @@ public class Recipe {
         this.reagents = reagents;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }

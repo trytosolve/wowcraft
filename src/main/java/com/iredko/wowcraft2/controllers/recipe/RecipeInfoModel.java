@@ -16,13 +16,13 @@ public class RecipeInfoModel {
 
     private Map<ReagentInfoModel,Integer> reagenCountMap;
 
-    private Integer price;
+    private Integer sellPrice;
 
-    public RecipeInfoModel(Integer id, String name, Map<ReagentInfoModel, Integer> reagenCountMap, Integer price) {
+    public RecipeInfoModel(Integer id, String name, Map<ReagentInfoModel, Integer> reagenCountMap, Integer sellPrice) {
         this.id = id;
         this.name = name;
         this.reagenCountMap = reagenCountMap;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public static RecipeInfoModel fromEntity(Recipe recipe) {
@@ -30,7 +30,7 @@ public class RecipeInfoModel {
         for (RecipeReagent recipeReagents : recipe.getReagents()) {
             reagentModelsCountMap.put(ReagentInfoModel.fromEntity(recipeReagents.getReagent()),recipeReagents.getCount());
         }
-        return new RecipeInfoModel(recipe.getId(), recipe.getName(), reagentModelsCountMap, recipe.getPrice());
+        return new RecipeInfoModel(recipe.getId(), recipe.getName(), reagentModelsCountMap, recipe.getSellPrice());
     }
 
     public static RecipeInfoModel fromForm(RecipeForm recipeForm, List<ReagentInfoModel> reagentList) {
@@ -42,7 +42,7 @@ public class RecipeInfoModel {
                 }
             }
         }
-        return new RecipeInfoModel(recipeForm.getId(),recipeForm.getName(),reagenCountMap,recipeForm.getPrice());
+        return new RecipeInfoModel(recipeForm.getId(),recipeForm.getName(),reagenCountMap,recipeForm.getSellPrice());
     }
 
     public Integer getId() {
@@ -69,12 +69,12 @@ public class RecipeInfoModel {
         this.reagenCountMap = reagenCountMap;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
 }

@@ -51,7 +51,7 @@
                     <div>${reagent.name}</div>
                 </td>
                 <td>
-                    <div>${reagent.price}</div>
+                    <div>${reagent.sellPrice}</div>
                 </td>
                 <td><a href="${pageContext.request.contextPath}/reagents/edit?id=${reagent.id}">edit</a></td>
                 <td><a href="${pageContext.request.contextPath}/reagents/delete?id=${reagent.id}">delete</a></td>

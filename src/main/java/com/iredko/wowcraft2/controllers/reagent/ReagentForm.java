@@ -11,19 +11,19 @@ public class ReagentForm {
     private String name;
 
     @NotNull
-    private Integer price;
+    private Integer sellPrice;
 
     public ReagentForm() {
     }
 
-    public ReagentForm(Integer id, String name, Integer price) {
+    public ReagentForm(Integer id, String name, Integer sellPrice) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public static ReagentForm fromModel(ReagentInfoModel reagentInfoModel) {
-        return new ReagentForm(reagentInfoModel.getId(), reagentInfoModel.getName(), reagentInfoModel.getPrice());
+        return new ReagentForm(reagentInfoModel.getId(), reagentInfoModel.getName(), reagentInfoModel.getSellPrice());
     }
 
     public Integer getId() {
@@ -42,11 +42,11 @@ public class ReagentForm {
         this.name = name;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }

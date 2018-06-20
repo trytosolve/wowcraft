@@ -15,16 +15,16 @@ public class RecipeForm {
 
     private Map<Integer, Integer> reagentCountMap;
 
-    private Integer price;
+    private Integer sellPrice;
 
     public RecipeForm() {
     }
 
-    public RecipeForm(int id, String name, Map<Integer, Integer> reagentCountMap, Integer price) {
+    public RecipeForm(int id, String name, Map<Integer, Integer> reagentCountMap, Integer sellPrice) {
         this.id = id;
         this.name = name;
         this.reagentCountMap = reagentCountMap;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public static RecipeForm fromModel(RecipeInfoModel recipeInfoModel) {
@@ -33,15 +33,15 @@ public class RecipeForm {
             reagentIdCount.put(entry.getKey().getId(), entry.getValue());
         }
         return new RecipeForm(recipeInfoModel.getId(), recipeInfoModel.getName(),reagentIdCount,
-                recipeInfoModel.getPrice());
+                recipeInfoModel.getSellPrice());
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
     public int getId() {

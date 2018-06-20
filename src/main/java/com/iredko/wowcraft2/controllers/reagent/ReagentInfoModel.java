@@ -8,23 +8,23 @@ public class ReagentInfoModel {
 
     private String name;
 
-    private Integer price;
+    private Integer sellPrice;
 
     public ReagentInfoModel() {
     }
 
-    public ReagentInfoModel(Integer id, String name, Integer price) {
+    public ReagentInfoModel(Integer id, String name, Integer sellPrice) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.sellPrice = sellPrice;
     }
 
     public static ReagentInfoModel fromEntity(Reagent reagent) {
-        return new ReagentInfoModel(reagent.getId(), reagent.getName(), reagent.getPrice());
+        return new ReagentInfoModel(reagent.getId(), reagent.getName(), reagent.getSellPrice());
     }
 
     public static ReagentInfoModel fromForm(ReagentForm reagentForm) {
-        return new ReagentInfoModel(reagentForm.getId(), reagentForm.getName(), reagentForm.getPrice());
+        return new ReagentInfoModel(reagentForm.getId(), reagentForm.getName(), reagentForm.getSellPrice());
     }
 
     public Integer getId() {
@@ -43,11 +43,11 @@ public class ReagentInfoModel {
         this.name = name;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getSellPrice() {
+        return sellPrice;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setSellPrice(Integer sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }
