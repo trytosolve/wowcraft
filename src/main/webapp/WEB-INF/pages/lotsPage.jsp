@@ -7,6 +7,9 @@
     <title>Lots</title>
 </head>
 <body>
+<div>
+    <a href="${pageContext.request.contextPath}/lots/add">Add Lot</a>
+</div>
 <table class="recipe_table">
     <form:form method="post">
         <tr>
@@ -34,10 +37,15 @@
             </tr>
         </c:forEach>
     </form:form>
-
-    <div>
-        <a href="${pageContext.request.contextPath}/lots/add">Add Lot</a>
-    </div>
 </table>
+<div>
+    <a href="/recipes">Recipes</a>
+</div>
+<div>
+    <a href="/reagents">Reagents</a>
+</div>
+<div>
+    <a href="/items_prices">Items Prices</a>
+</div>
 </body>
 </html>

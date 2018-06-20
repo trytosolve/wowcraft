@@ -35,5 +35,16 @@
         </c:forEach>
     </form:form>
 </table>
+
+<body>
+<div>
+    <a href="/recipes">Recipes</a>
+</div>
+<div>
+    <a href="/reagents">Reagents</a>
+</div>
+<div>
+    <a href="/lots">Lots</a>
+</div>
 </body>
 </html>

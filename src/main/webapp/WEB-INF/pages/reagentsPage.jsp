@@ -59,5 +59,14 @@
         </c:forEach>
     </form:form>
 </table>
+<div>
+    <a href="/recipes">Recipes</a>
+</div>
+<div>
+    <a href="/items_prices">Items Prices</a>
+</div>
+<div>
+    <a href="/lots">Lots</a>
+</div>
 </body>
 </html>
