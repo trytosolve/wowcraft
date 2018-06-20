@@ -52,6 +52,10 @@ public class ReagentController {
 
     @RequestMapping(path = "delete", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@RequestParam("id") Integer id,ModelAndView modelAndView) {
+        if (!reagentManager.exist(id)) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
         ReagentInfoModel reagent = reagentManager.findById(id);
         modelAndView.setViewName("reagentsPage");
         if (checkUsages(reagent, modelAndView)) {
@@ -65,6 +69,10 @@ public class ReagentController {
 
     @RequestMapping(path = "edit", method = RequestMethod.GET)
     public ModelAndView showEditReagentPage(@RequestParam("id") Integer id, ModelAndView modelAndView) {
+        if (!reagentManager.exist(id)) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
         modelAndView.addObject(ReagentForm.fromModel(reagentManager.findById(id)));
         modelAndView.setViewName("editReagentPage");
         return modelAndView;
@@ -72,7 +80,7 @@ public class ReagentController {
 
     @RequestMapping(path = "edit", method = RequestMethod.POST)
     public ModelAndView editReagent(@ModelAttribute("reagentForm") @Valid ReagentForm reagentForm,
-                                    BindingResult result, @RequestParam Integer id) {
+                                    BindingResult result) {
         if (result.hasErrors()) {
             return new ModelAndView("editReagentPage");
         }

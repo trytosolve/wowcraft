@@ -64,6 +64,10 @@ public class RecipeController {
 
     @RequestMapping(path = "edit",method = RequestMethod.GET)
     public ModelAndView editRecipePage(@RequestParam Integer id, ModelAndView modelAndView) {
+        if (!recipeManager.exist(id)) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
         modelAndView.addObject("recipeForm", RecipeForm.fromModel(recipeManager.findById(id)));
         modelAndView.addObject("allReagents", reagentManager.findAll());
         modelAndView.setViewName("editRecipePage");
@@ -71,7 +75,7 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "edit",method = RequestMethod.POST)
-    public ModelAndView editRecipe(@RequestParam Integer id, @ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
+    public ModelAndView editRecipe(@ModelAttribute("recipeForm") @Valid RecipeForm recipeForm,
                                    BindingResult result,ModelAndView modelAndView) {
         if (result.hasErrors()) {
             modelAndView.addObject("allReagents", reagentManager.findAll());
@@ -84,6 +88,9 @@ public class RecipeController {
 
     @RequestMapping (value = "delete", method = RequestMethod.GET)
     public ModelAndView deleteReagent(@RequestParam Integer id) {
+        if (!recipeManager.exist(id)) {
+            return new ModelAndView("redirect:/");
+        }
         recipeManager.delete(recipeManager.findById(id));
         return new ModelAndView("redirect:/recipes");
     }
