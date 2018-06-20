@@ -5,6 +5,8 @@ import com.iredko.wowcraft2.controllers.lot.LotInfoModel;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -20,12 +22,12 @@ public class Lot {
     private String name;
 
     @Column(name = "price")
-    private Integer price;
+    private BigDecimal price;
 
     public Lot() {
     }
 
-    public Lot(Integer id, String name, Integer price) {
+    public Lot(Integer id, String name, BigDecimal price) {
         this.name = name;
         this.price = price;
     }
@@ -50,11 +52,11 @@ public class Lot {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

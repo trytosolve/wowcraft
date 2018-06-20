@@ -2,6 +2,7 @@ package com.iredko.wowcraft2.controllers.reagent;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 public class ReagentForm {
 
@@ -11,12 +12,12 @@ public class ReagentForm {
     private String name;
 
     @NotNull
-    private Integer sellPrice;
+    private BigDecimal sellPrice;
 
     public ReagentForm() {
     }
 
-    public ReagentForm(Integer id, String name, Integer sellPrice) {
+    public ReagentForm(Integer id, String name, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.sellPrice = sellPrice;
@@ -42,11 +43,11 @@ public class ReagentForm {
         this.name = name;
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 }

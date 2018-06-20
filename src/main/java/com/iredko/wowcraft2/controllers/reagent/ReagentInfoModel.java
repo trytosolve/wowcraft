@@ -2,18 +2,20 @@ package com.iredko.wowcraft2.controllers.reagent;
 
 import com.iredko.wowcraft2.DAO.reagent.Reagent;
 
+import java.math.BigDecimal;
+
 public class ReagentInfoModel {
 
     private Integer id;
 
     private String name;
 
-    private Integer sellPrice;
+    private BigDecimal sellPrice;
 
     public ReagentInfoModel() {
     }
 
-    public ReagentInfoModel(Integer id, String name, Integer sellPrice) {
+    public ReagentInfoModel(Integer id, String name, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.sellPrice = sellPrice;
@@ -43,11 +45,11 @@ public class ReagentInfoModel {
         this.name = name;
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 }

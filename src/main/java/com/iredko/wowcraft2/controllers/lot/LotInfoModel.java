@@ -2,18 +2,20 @@ package com.iredko.wowcraft2.controllers.lot;
 
 import com.iredko.wowcraft2.DAO.lot.Lot;
 
+import java.math.BigDecimal;
+
 public class LotInfoModel {
 
     private Integer id;
 
     private String name;
 
-    private Integer price;
+    private BigDecimal price;
 
     public LotInfoModel() {
     }
 
-    public LotInfoModel(Integer id, String name, Integer price) {
+    public LotInfoModel(Integer id, String name, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -44,11 +46,11 @@ public class LotInfoModel {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

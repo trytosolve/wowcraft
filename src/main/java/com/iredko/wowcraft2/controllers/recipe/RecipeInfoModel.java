@@ -4,6 +4,7 @@ import com.iredko.wowcraft2.DAO.recipe.Recipe;
 import com.iredko.wowcraft2.DAO.recipe_reagent.RecipeReagent;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,9 @@ public class RecipeInfoModel {
 
     private Map<ReagentInfoModel,Integer> reagenCountMap;
 
-    private Integer sellPrice;
+    private BigDecimal sellPrice;
 
-    public RecipeInfoModel(Integer id, String name, Map<ReagentInfoModel, Integer> reagenCountMap, Integer sellPrice) {
+    public RecipeInfoModel(Integer id, String name, Map<ReagentInfoModel, Integer> reagenCountMap, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.reagenCountMap = reagenCountMap;
@@ -69,11 +70,11 @@ public class RecipeInfoModel {
         this.reagenCountMap = reagenCountMap;
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 

@@ -4,6 +4,7 @@ import com.iredko.wowcraft2.controllers.lot.AuctionInfo;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 public class ItemModel {
@@ -12,9 +13,9 @@ public class ItemModel {
 
     private String name;
 
-    private Integer buyPrice;
+    private BigDecimal buyPrice;
 
-    private Integer craftPrice;
+    private BigDecimal craftPrice;
 
     public ItemModel(RecipeInfoModel recipe) {
         this.recipe = recipe;
@@ -25,18 +26,18 @@ public class ItemModel {
         return new ItemModel(recipe);
     }
 
-    public Integer calculateBuyPrice(AuctionInfo auctionInfo) {
+    public BigDecimal calculateBuyPrice(AuctionInfo auctionInfo) {
         return auctionInfo.averagePriceByName(name);
     }
 
-    public Integer calculateBuyCraft(AuctionInfo auctionInfo) {
+    public BigDecimal calculateBuyCraft(AuctionInfo auctionInfo) {
         Map<ReagentInfoModel,Integer> reagentsInfoMap = recipe.getReagenCountMap();
-        Integer price = new Integer(0);
+        BigDecimal price = new BigDecimal(0);
         for (Map.Entry<ReagentInfoModel, Integer> entry : reagentsInfoMap.entrySet()) {
             if (auctionInfo.averagePriceByName(entry.getKey().getName()) == null) {
                 return null;
             }
-            price = price + auctionInfo.averagePriceByName(entry.getKey().getName()) * entry.getValue();
+            price.add(auctionInfo.averagePriceByName(entry.getKey().getName()).multiply(new BigDecimal(entry.getValue())));
         }
         return price;
     }
@@ -49,19 +50,19 @@ public class ItemModel {
         this.name = name;
     }
 
-    public Integer getBuyPrice() {
+    public BigDecimal getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(Integer buyPrice) {
+    public void setBuyPrice(BigDecimal buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public Integer getCraftPrice() {
+    public BigDecimal getCraftPrice() {
         return craftPrice;
     }
 
-    public void setCraftPrice(Integer craftPrice) {
+    public void setCraftPrice(BigDecimal craftPrice) {
         this.craftPrice = craftPrice;
     }
 }

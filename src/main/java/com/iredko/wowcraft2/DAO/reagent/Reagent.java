@@ -4,6 +4,8 @@ import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -19,12 +21,12 @@ public class Reagent {
     private String name;
 
     @Column(name="sell_price")
-    private Integer sellPrice;
+    private BigDecimal sellPrice;
 
     public Reagent() {
     }
 
-    public Reagent(Integer id,String name, Integer sellPrice) {
+    public Reagent(Integer id,String name, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.sellPrice = sellPrice;
@@ -50,11 +52,11 @@ public class Reagent {
         this.name = name;
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 }

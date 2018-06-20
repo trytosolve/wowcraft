@@ -7,6 +7,7 @@ import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,13 +34,13 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     List<RecipeReagent> reagents = new ArrayList<>();
 
-    @Column(name = "price")
-    private Integer sellPrice;
+    @Column(name = "sell_price")
+    private BigDecimal sellPrice;
 
     public Recipe() {
     }
 
-    public Recipe(Integer id, String name, Integer sellPrice) {
+    public Recipe(Integer id, String name, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.sellPrice = sellPrice;
@@ -83,11 +84,11 @@ public class Recipe {
         this.reagents = reagents;
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 }

@@ -2,6 +2,7 @@ package com.iredko.wowcraft2.controllers.lot;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 public class LotForm {
     private Integer id;
@@ -10,12 +11,12 @@ public class LotForm {
     private String name;
 
     @NotNull
-    private Integer price;
+    private BigDecimal price;
 
     public LotForm() {
     }
 
-    public LotForm(Integer id, String name, Integer price) {
+    public LotForm(Integer id, String name, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -41,11 +42,11 @@ public class LotForm {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

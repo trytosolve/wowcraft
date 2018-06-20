@@ -3,6 +3,7 @@ package com.iredko.wowcraft2.controllers.recipe;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +16,12 @@ public class RecipeForm {
 
     private Map<Integer, Integer> reagentCountMap;
 
-    private Integer sellPrice;
+    private BigDecimal sellPrice;
 
     public RecipeForm() {
     }
 
-    public RecipeForm(int id, String name, Map<Integer, Integer> reagentCountMap, Integer sellPrice) {
+    public RecipeForm(int id, String name, Map<Integer, Integer> reagentCountMap, BigDecimal sellPrice) {
         this.id = id;
         this.name = name;
         this.reagentCountMap = reagentCountMap;
@@ -36,11 +37,11 @@ public class RecipeForm {
                 recipeInfoModel.getSellPrice());
     }
 
-    public Integer getSellPrice() {
+    public BigDecimal getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Integer sellPrice) {
+    public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
     }
 

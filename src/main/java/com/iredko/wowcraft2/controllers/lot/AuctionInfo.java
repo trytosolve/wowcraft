@@ -1,5 +1,6 @@
 package com.iredko.wowcraft2.controllers.lot;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class AuctionInfo {
@@ -13,18 +14,18 @@ public class AuctionInfo {
         this.lots = lots;
     }
 
-    public Integer averagePriceByName(String name) {
-        Integer sumAllLots = new Integer(0);
-        Integer countLots = new Integer(0);
+    public BigDecimal averagePriceByName(String name) {
+        BigDecimal sumAllLots = new BigDecimal(0);
+        int countLots = 0;
         for (LotInfoModel lot: lots) {
             if (lot.getName().equals(name)) {
                 countLots++;
-                sumAllLots = sumAllLots + lot.getPrice();
+                sumAllLots.add(lot.getPrice());
             }
         }
         if (countLots == 0) {
             return null;
         }
-        return sumAllLots/countLots;
+        return sumAllLots.divide(new BigDecimal(countLots),BigDecimal.ROUND_HALF_UP);
     }
 }
