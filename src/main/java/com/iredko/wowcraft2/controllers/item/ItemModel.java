@@ -37,7 +37,7 @@ public class ItemModel {
             if (auctionInfo.averagePriceByName(entry.getKey().getName()) == null) {
                 return null;
             }
-            price.add(auctionInfo.averagePriceByName(entry.getKey().getName()).multiply(new BigDecimal(entry.getValue())));
+            price = price.add(auctionInfo.averagePriceByName(entry.getKey().getName()).multiply(new BigDecimal(entry.getValue())));
         }
         return price;
     }
