@@ -20,7 +20,7 @@
                 <div>Count</div>
             </td>
             <td>
-                <div>Stock Price</div>
+                <div>Brunch Price</div>
             </td>
         </tr>
         <c:forEach items="${allStockBranches}" var="brunch">
