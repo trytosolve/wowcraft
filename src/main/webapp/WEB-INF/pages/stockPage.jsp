@@ -4,12 +4,9 @@
 <link href="<c:url value="/resources/css/stock.css" />" rel="stylesheet">
 <html>
 <head>
-    <title>Lots</title>
+    <title>Stock</title>
 </head>
 <body>
-<div>
-    <a href="${pageContext.request.contextPath}/lots/add">Add Lot</a>
-</div>
 <table class="stock_table">
     <form:form method="post">
         <tr>
