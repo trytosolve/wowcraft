@@ -1,7 +1,7 @@
 package com.iredko.wowcraft2.service;
 
-import com.iredko.wowcraft2.DAO.lot.Lot;
-import com.iredko.wowcraft2.DAO.lot.LotDao;
+import com.iredko.wowcraft2.dao.lot.Lot;
+import com.iredko.wowcraft2.dao.lot.LotDao;
 import com.iredko.wowcraft2.controllers.lot.LotInfoModel;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class LotManager {
 
-    LotDao lotDAO;
+    private LotDao lotDAO;
 
     public LotManager(LotDao lotDAO) {
         this.lotDAO = lotDAO;

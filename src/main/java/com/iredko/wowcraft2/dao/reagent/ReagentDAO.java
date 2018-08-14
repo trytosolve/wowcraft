@@ -1,4 +1,4 @@
-package com.iredko.wowcraft2.DAO.reagent;
+package com.iredko.wowcraft2.dao.reagent;
 
 import org.springframework.stereotype.Component;
 

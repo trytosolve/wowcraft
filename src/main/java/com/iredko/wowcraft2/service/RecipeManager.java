@@ -1,8 +1,8 @@
 package com.iredko.wowcraft2.service;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
-import com.iredko.wowcraft2.DAO.recipe.Recipe;
-import com.iredko.wowcraft2.DAO.recipe.RecipeDAO;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
+import com.iredko.wowcraft2.dao.recipe.Recipe;
+import com.iredko.wowcraft2.dao.recipe.RecipeDAO;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class RecipeManager {
 
-    RecipeDAO recipeDAO;
+    private RecipeDAO recipeDAO;
 
     public RecipeManager(RecipeDAO recipeDAO) {
         this.recipeDAO = recipeDAO;

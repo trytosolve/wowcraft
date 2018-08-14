@@ -1,7 +1,7 @@
-package com.iredko.wowcraft2.DAO.recipe;
+package com.iredko.wowcraft2.dao.recipe;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
-import com.iredko.wowcraft2.DAO.recipe_reagent.RecipeReagent;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
+import com.iredko.wowcraft2.dao.recipe_reagent.RecipeReagent;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
 
@@ -32,7 +32,7 @@ public class Recipe {
     private String name;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<RecipeReagent> reagents = new ArrayList<>();
+    private List<RecipeReagent> reagents = new ArrayList<>();
 
     @Column(name = "sell_price")
     private BigDecimal sellPrice;

@@ -16,5 +16,8 @@
 <div>
     <a href="/lots">Lots</a>
 </div>
+<div>
+    <a href="/stock">Stock</a>
+</div>
 </body>
 </html>

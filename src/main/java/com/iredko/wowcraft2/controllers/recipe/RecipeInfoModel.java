@@ -1,7 +1,7 @@
 package com.iredko.wowcraft2.controllers.recipe;
 
-import com.iredko.wowcraft2.DAO.recipe.Recipe;
-import com.iredko.wowcraft2.DAO.recipe_reagent.RecipeReagent;
+import com.iredko.wowcraft2.dao.recipe.Recipe;
+import com.iredko.wowcraft2.dao.recipe_reagent.RecipeReagent;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 
 import java.math.BigDecimal;

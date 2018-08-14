@@ -1,4 +1,4 @@
-package com.iredko.wowcraft2.DAO.lot;
+package com.iredko.wowcraft2.dao.lot;
 
 
 import com.iredko.wowcraft2.controllers.lot.LotInfoModel;
@@ -21,19 +21,24 @@ public class Lot {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "count")
+    private Integer count;
+
     @Column(name = "price")
     private BigDecimal price;
 
     public Lot() {
     }
 
-    public Lot(Integer id, String name, BigDecimal price) {
+    public Lot(Integer id, String name,Integer count, BigDecimal price) {
+        this.id = id;
         this.name = name;
+        this.count = count;
         this.price = price;
     }
 
     public static Lot fromModel(LotInfoModel lotInfoModel) {
-        return new Lot(lotInfoModel.getId(),lotInfoModel.getName(),lotInfoModel.getPrice());
+        return new Lot(lotInfoModel.getId(),lotInfoModel.getName(), lotInfoModel.getCount(),lotInfoModel.getPrice());
     }
 
     public Integer getId() {
@@ -58,5 +63,13 @@ public class Lot {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

@@ -1,7 +1,5 @@
 package com.iredko.wowcraft2.controllers.recipe;
 
-import com.iredko.wowcraft2.DAO.recipe.Recipe;
-import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import com.iredko.wowcraft2.service.ReagentManager;
 import com.iredko.wowcraft2.service.RecipeManager;
 import org.springframework.stereotype.Controller;
@@ -13,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping(path = "/recipes")
 public class RecipeController {
 
-    RecipeManager recipeManager;
-    ReagentManager reagentManager;
+    private RecipeManager recipeManager;
+    private ReagentManager reagentManager;
 
     public RecipeController(RecipeManager recipeManager, ReagentManager reagentManager) {
         this.recipeManager = recipeManager;

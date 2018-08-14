@@ -1,4 +1,4 @@
-package com.iredko.wowcraft2.DAO.lot;
+package com.iredko.wowcraft2.dao.lot;
 
 import org.springframework.stereotype.Component;
 

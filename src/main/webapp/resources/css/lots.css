@@ -1,0 +1,13 @@
+.lots_table, td, tr {
+    border: 1px solid black;
+    font-size: medium;
+}
+
+.lots_table td {
+    width: 70px;
+    text-align: center;
+}
+
+.lots_table tr {
+    border: 0px;
+}

@@ -1,6 +1,6 @@
-package com.iredko.wowcraft2.DAO.recipe;
+package com.iredko.wowcraft2.dao.recipe;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;

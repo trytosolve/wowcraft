@@ -1,0 +1,13 @@
+.stock_table, td, tr {
+    border: 1px solid black;
+    font-size: medium;
+}
+
+.stock_table td {
+    width: 70px;
+    text-align: center;
+}
+
+.stock_table tr {
+    border: 0px;
+}

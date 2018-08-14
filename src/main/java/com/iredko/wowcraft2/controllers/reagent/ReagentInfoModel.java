@@ -1,6 +1,6 @@
 package com.iredko.wowcraft2.controllers.reagent;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,8 @@
 package com.iredko.wowcraft2.controllers.lot;
 
+import com.iredko.wowcraft2.controllers.stock.StockBrunchInfoModel;
 import com.iredko.wowcraft2.service.LotManager;
+import com.iredko.wowcraft2.service.StockBrunchManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,10 +17,12 @@ import javax.validation.Valid;
 @RequestMapping(path = "/lots")
 public class LotController {
 
-    LotManager lotManager;
+    private LotManager lotManager;
+    private StockBrunchManager stockBrunchManager;
 
-    public LotController(LotManager lotManager) {
+    public LotController(LotManager lotManager, StockBrunchManager stockBrunchManager) {
         this.lotManager = lotManager;
+        this.stockBrunchManager = stockBrunchManager;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -33,7 +37,7 @@ public class LotController {
     Методы для добавления и удаление лотов добавлены для удобства заполнения таблицы лотов в свой БД.
     В реальносте предполагается что таблица лотов получается из какого либо источника.
      */
-    @RequestMapping(path = "add",method = RequestMethod.GET)
+    @RequestMapping(path = "add", method = RequestMethod.GET)
     public ModelAndView showNewLotPage(ModelAndView modelAndView, LotForm lotForm) {
         modelAndView.addObject("lotForm", lotForm);
         modelAndView.setViewName("newLotPage");
@@ -42,7 +46,7 @@ public class LotController {
 
     @RequestMapping(path = "add", method = RequestMethod.POST)
     public ModelAndView submitNewLot(@ModelAttribute("lotForm") @Valid LotForm lotForm,
-                                         BindingResult result) {
+                                     BindingResult result) {
         if (result.hasErrors()) {
             return new ModelAndView("newLotPage");
         }
@@ -58,8 +62,20 @@ public class LotController {
         }
         LotInfoModel lot = lotManager.findById(id);
         lotManager.delete(lot);
-        modelAndView.setViewName("lotsPage");
+        modelAndView.setViewName("redirect:/lots");
         return modelAndView;
     }
 
+    @RequestMapping(path = "buyLot", method = RequestMethod.GET)
+    public ModelAndView buyLot(@RequestParam("id") Integer id, ModelAndView modelAndView) {
+        if (!lotManager.exist(id)) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
+        LotInfoModel lot = lotManager.findById(id);
+        stockBrunchManager.insert(StockBrunchInfoModel.fromLotModel(lot));
+        lotManager.delete(lot);
+        modelAndView.setViewName("redirect:/lots");
+        return modelAndView;
+    }
 }

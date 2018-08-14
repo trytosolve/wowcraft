@@ -1,7 +1,7 @@
-package com.iredko.wowcraft2.DAO.recipe_reagent;
+package com.iredko.wowcraft2.dao.recipe_reagent;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
-import com.iredko.wowcraft2.DAO.recipe.Recipe;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
+import com.iredko.wowcraft2.dao.recipe.Recipe;
 
 import javax.persistence.*;
 

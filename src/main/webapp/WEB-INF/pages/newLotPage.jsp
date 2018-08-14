@@ -9,6 +9,11 @@
             <td><form:errors path="name"/></td>
         </tr>
         <tr>
+            <td>Count:</td>
+            <td><form:input id="count" path="count"/></td>
+            <td><form:errors path="count"/></td>
+        </tr>
+        <tr>
             <td>Lot Price:</td>
             <td><form:input id="sell_price" path="price"/></td>
             <td><form:errors path="price"/></td>

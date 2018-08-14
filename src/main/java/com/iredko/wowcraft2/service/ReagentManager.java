@@ -1,7 +1,7 @@
 package com.iredko.wowcraft2.service;
 
-import com.iredko.wowcraft2.DAO.reagent.Reagent;
-import com.iredko.wowcraft2.DAO.reagent.ReagentDAO;
+import com.iredko.wowcraft2.dao.reagent.Reagent;
+import com.iredko.wowcraft2.dao.reagent.ReagentDAO;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class ReagentManager {
 
-    ReagentDAO reagentDAO;
+    private ReagentDAO reagentDAO;
 
     public ReagentManager(ReagentDAO reagentDAO) {
         this.reagentDAO = reagentDAO;
