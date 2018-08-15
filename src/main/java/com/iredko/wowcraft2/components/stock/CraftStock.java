@@ -9,7 +9,6 @@ public class CraftStock implements Stock {
 
     @Override
     public void deposit(Bucket bucket, int itemCount) {
-        ItemLeftover itemLeftover = getLeftovers(bucket.getItemId());
         BucketLeftover bucketLeftover = getBucketLeftover(bucket);
         if (itemCount <= 0) {
             throw new RuntimeException("incorrect value itemCount");
