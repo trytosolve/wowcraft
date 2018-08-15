@@ -13,13 +13,14 @@ public class CraftStock implements Stock {
         BucketLeftover bucketLeftover = getBucketLeftover(bucket);
         if (bucketLeftover == null) {
             bucketLeftover = new BucketLeftover(bucket, itemCount);
-        }
-        if (itemLeftover == null) {
-            itemLeftover = new ItemLeftover(bucket.getItemId());
+            if (itemLeftover == null) {
+                itemLeftover = new ItemLeftover(bucket.getItemId());
+                itemLeftovers.add(itemLeftover);
+            }
             itemLeftover.addBucket(bucketLeftover);
-            itemLeftovers.add(itemLeftover);
+        } else {
+            bucketLeftover.addItems(itemCount);
         }
-        bucketLeftover.addItems(itemCount);
     }
 
     @Override
