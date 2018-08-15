@@ -26,19 +26,23 @@ public class StockBrunch {
     @Column(name = "price")
     private BigDecimal price;
 
+    @Column(name = "price_for_one")
+    private BigDecimal priceForOne;
+
     public StockBrunch() {
     }
 
-    public StockBrunch(Integer id,String name, Integer count, BigDecimal price) {
+    public StockBrunch(Integer id, String name, Integer count, BigDecimal price, BigDecimal priceForOne) {
         this.id = id;
         this.name = name;
         this.count = count;
         this.price = price;
+        this.priceForOne = priceForOne;
     }
 
     public static StockBrunch fromModel(StockBrunchInfoModel stockBrunchInfoModel) {
         return new StockBrunch(stockBrunchInfoModel.getId(),stockBrunchInfoModel.getName(),
-                stockBrunchInfoModel.getCount(),stockBrunchInfoModel.getPrice());
+                stockBrunchInfoModel.getCount(),stockBrunchInfoModel.getPrice(),stockBrunchInfoModel.getPriceForOne());
     }
 
     public Integer getId() {
@@ -73,4 +77,11 @@ public class StockBrunch {
         this.price = price;
     }
 
+    public BigDecimal getPriceForOne() {
+        return priceForOne;
+    }
+
+    public void setPriceForOne(BigDecimal priceForOne) {
+        this.priceForOne = priceForOne;
+    }
 }

@@ -1,7 +1,6 @@
 package com.iredko.wowcraft2.controllers.stock;
 
 import com.iredko.wowcraft2.controllers.lot.LotInfoModel;
-import com.iredko.wowcraft2.dao.lot.Lot;
 import com.iredko.wowcraft2.dao.stock.StockBrunch;
 
 import java.math.BigDecimal;
@@ -16,21 +15,24 @@ public class StockBrunchInfoModel {
 
     private BigDecimal price;
 
-    public StockBrunchInfoModel(Integer id, String name, Integer count, BigDecimal price) {
+    private BigDecimal priceForOne;
+
+    public StockBrunchInfoModel(Integer id, String name, Integer count, BigDecimal price, BigDecimal priceForOne) {
         this.id = id;
         this.name = name;
         this.count = count;
         this.price = price;
+        this.priceForOne = priceForOne;
     }
 
     public static StockBrunchInfoModel fromEntity(StockBrunch stockBrunch) {
         return new StockBrunchInfoModel(stockBrunch.getId(), stockBrunch.getName(),
-                stockBrunch.getCount(), stockBrunch.getPrice());
+                stockBrunch.getCount(), stockBrunch.getPrice(),stockBrunch.getPriceForOne());
     }
 
     public static StockBrunchInfoModel fromLotModel(LotInfoModel lot) {
         return new StockBrunchInfoModel(null, lot.getName(),
-                lot.getCount(), lot.getPrice());
+                lot.getCount(), lot.getPrice(), lot.getPrice().divide(new BigDecimal(lot.getCount()),BigDecimal.ROUND_HALF_UP));
 
     }
 
@@ -64,5 +66,13 @@ public class StockBrunchInfoModel {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public BigDecimal getPriceForOne() {
+        return priceForOne;
+    }
+
+    public void setPriceForOne(BigDecimal priceForOne) {
+        this.priceForOne = priceForOne;
     }
 }

@@ -22,6 +22,11 @@
             <td>
                 <div>Brunch Price</div>
             </td>
+            <td>
+                <div>
+                    Price for one
+                </div>
+            </td>
         </tr>
         <c:forEach items="${allStockBranches}" var="brunch">
             <tr>
@@ -36,6 +41,9 @@
                 </td>
                 <td>
                     <div>${brunch.price}</div>
+                </td>
+                <td>
+                    <div>${brunch.priceForOne}</div>
                 </td>
             </tr>
         </c:forEach>
