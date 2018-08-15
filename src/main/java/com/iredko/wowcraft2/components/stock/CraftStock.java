@@ -22,9 +22,6 @@ public class CraftStock implements Stock {
         if (itemCount <= 0) {
             throw new RuntimeException("incorrect value itemCount");
         }
-        if (bucketLeftover == null) {
-            throw new RuntimeException("items are not in stock");
-        }
         if (bucketLeftover.getItemCount() < itemCount) {
             throw new RuntimeException("not enough items");
         } else {
