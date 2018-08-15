@@ -14,6 +14,10 @@ public class BucketLeftover {
         this.itemCount = itemCount;
     }
 
+    public BucketLeftover(Bucket bucket) {
+        this(bucket,0);
+    }
+
     public Bucket getBucket() {
         return bucket;
     }

@@ -11,16 +11,10 @@ public class CraftStock implements Stock {
     public void deposit(Bucket bucket, int itemCount) {
         ItemLeftover itemLeftover = getLeftovers(bucket.getItemId());
         BucketLeftover bucketLeftover = getBucketLeftover(bucket);
-        if (bucketLeftover == null) {
-            bucketLeftover = new BucketLeftover(bucket, itemCount);
-            if (itemLeftover == null) {
-                itemLeftover = new ItemLeftover(bucket.getItemId());
-                itemLeftovers.add(itemLeftover);
-            }
-            itemLeftover.addBucket(bucketLeftover);
-        } else {
-            bucketLeftover.addItems(itemCount);
+        if (itemCount <= 0) {
+            throw new RuntimeException("incorrect value itemCount");
         }
+        bucketLeftover.addItems(itemCount);
     }
 
     @Override
@@ -34,8 +28,7 @@ public class CraftStock implements Stock {
         }
         if (bucketLeftover.getItemCount() < itemCount) {
             throw new RuntimeException("not enough items");
-        }
-        else {
+        } else {
             bucketLeftover.withdraw(itemCount);
         }
     }
@@ -47,7 +40,9 @@ public class CraftStock implements Stock {
                 return itemLeftover;
             }
         }
-        return null;
+        ItemLeftover empty = new ItemLeftover(itemId);
+        itemLeftovers.add(empty);
+        return empty;
     }
 
     @Override
@@ -60,12 +55,14 @@ public class CraftStock implements Stock {
         }
     }
 
-    BucketLeftover getBucketLeftover(Bucket bucket) {
+    private BucketLeftover getBucketLeftover(Bucket bucket) {
         for (BucketLeftover bucketLeftover : getLeftovers(bucket.getItemId()).getBuckets()) {
             if (bucketLeftover.getBucket().equals(bucket)) {
                 return bucketLeftover;
             }
         }
-        return null;
+        BucketLeftover empty = new BucketLeftover(bucket);
+        getLeftovers(bucket.getItemId()).getBuckets().add(empty);
+        return empty;
     }
 }
