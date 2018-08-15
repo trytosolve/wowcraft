@@ -18,9 +18,8 @@ public class CraftStock implements Stock {
             itemLeftover = new ItemLeftover(bucket.getItemId());
             itemLeftover.addBucket(bucketLeftover);
             itemLeftovers.add(itemLeftover);
-        } else {
-            bucketLeftover.addItems(itemCount);
         }
+        bucketLeftover.addItems(itemCount);
     }
 
     @Override
