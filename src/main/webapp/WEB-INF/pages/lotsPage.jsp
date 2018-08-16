@@ -14,10 +14,7 @@
     <form:form method="post">
         <tr>
             <td>
-                <div>Id</div>
-            </td>
-            <td>
-                <div>Name</div>
+                <div>Item Id</div>
             </td>
             <td>
                 <div>Count</div>
@@ -29,10 +26,7 @@
         <c:forEach items="${lots}" var="lot">
             <tr>
                 <td>
-                    <div>${lot.id}</div>
-                </td>
-                <td>
-                    <div>${lot.name}</div>
+                    <div>${lot.itemId}</div>
                 </td>
                 <td>
                     <div>${lot.count}</div>

@@ -14,11 +14,11 @@ public class AuctionInfo {
         this.lots = lots;
     }
 
-    public BigDecimal averagePriceByName(String name) {
+    public BigDecimal averagePriceById(int id) {
         BigDecimal sumAllLots = new BigDecimal(0.00);
         int countLots = 0;
         for (LotInfoModel lot: lots) {
-            if (lot.getName().equals(name)) {
+            if (lot.getItemId()==id) {
                 countLots++;
                 BigDecimal decimal = lot.getPrice();
                 sumAllLots = sumAllLots.add(decimal);

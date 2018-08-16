@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 public class LotInfoModel {
 
-    private Integer id;
+    private int id;
 
-    private String name;
+    private int itemId;
 
     private Integer count;
 
@@ -17,36 +17,36 @@ public class LotInfoModel {
     public LotInfoModel() {
     }
 
-    public LotInfoModel(Integer id, String name, Integer count, BigDecimal price) {
+    public LotInfoModel(int id, int itemId, Integer count, BigDecimal price) {
         this.id = id;
-        this.name = name;
+        this.itemId = itemId;
         this.count = count;
         this.price = price;
     }
 
     public static LotInfoModel fromEntity(Lot lot) {
-        return new LotInfoModel(lot.getId(), lot.getName(), lot.getCount(), lot.getPrice());
+        return new LotInfoModel(lot.getId() ,lot.getItemId(),lot.getCount(),lot.getPrice());
     }
 
     public static LotInfoModel fromForm(LotForm lotForm) {
-        return new LotInfoModel(lotForm.getId(), lotForm.getName(), lotForm.getCount(), lotForm.getPrice());
+        return new LotInfoModel(lotForm.getId() ,lotForm.getItemId(),lotForm.getCount(),lotForm.getPrice());
     }
 
 
-    public Integer getId() {
-        return id;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public BigDecimal getPrice() {
@@ -57,11 +57,11 @@ public class LotInfoModel {
         this.price = price;
     }
 
-    public Integer getCount() {
-        return count;
+    public int getId() {
+        return id;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setId(int id) {
+        this.id = id;
     }
 }

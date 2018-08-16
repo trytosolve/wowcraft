@@ -11,7 +11,7 @@
     <form:form method="post">
         <tr>
             <td>
-                <div>Name</div>
+                <div>Item Id</div>
             </td>
             <td>
                 <div>Buy Price</div>
@@ -23,7 +23,7 @@
         <c:forEach items="${items}" var="item">
             <tr>
                 <td>
-                    <div>${item.name}</div>
+                    <div>${item.id}</div>
                 </td>
                 <td>
                     <div>${item.buyPrice}</div>

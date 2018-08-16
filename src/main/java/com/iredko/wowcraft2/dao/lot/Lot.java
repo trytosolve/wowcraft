@@ -18,8 +18,8 @@ public class Lot {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "item_id")
+    private int itemId;
 
     @Column(name = "count")
     private Integer count;
@@ -30,15 +30,14 @@ public class Lot {
     public Lot() {
     }
 
-    public Lot(Integer id, String name,Integer count, BigDecimal price) {
-        this.id = id;
-        this.name = name;
+    public Lot(int id,int itemId, Integer count, BigDecimal price) {
+        this.itemId = itemId;
         this.count = count;
         this.price = price;
     }
 
     public static Lot fromModel(LotInfoModel lotInfoModel) {
-        return new Lot(lotInfoModel.getId(),lotInfoModel.getName(), lotInfoModel.getCount(),lotInfoModel.getPrice());
+        return new Lot(lotInfoModel.getId(),lotInfoModel.getItemId(),lotInfoModel.getCount(),lotInfoModel.getPrice());
     }
 
     public Integer getId() {
@@ -49,20 +48,12 @@ public class Lot {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     public Integer getCount() {
@@ -71,5 +62,13 @@ public class Lot {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

@@ -7,6 +7,10 @@ public class CraftStock implements Stock {
 
     private Set<ItemLeftover> itemLeftovers;
 
+    public CraftStock(Set<ItemLeftover> itemLeftovers) {
+        this.itemLeftovers = itemLeftovers;
+    }
+
     @Override
     public void deposit(Bucket bucket, int itemCount) {
         BucketLeftover bucketLeftover = getBucketLeftover(bucket);
@@ -60,5 +64,10 @@ public class CraftStock implements Stock {
         BucketLeftover empty = new BucketLeftover(bucket);
         getLeftovers(bucket.getItemId()).getBuckets().add(empty);
         return empty;
+    }
+
+
+    public Set<ItemLeftover> getItemLeftovers() {
+        return itemLeftovers;
     }
 }

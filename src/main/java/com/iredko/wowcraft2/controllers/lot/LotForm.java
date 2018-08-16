@@ -5,10 +5,10 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class LotForm {
-    private Integer id;
 
-    @Size(min=2,max = 15,message = "Name size must be between 2 and 15")
-    private String name;
+    private int id;
+
+    private int itemId;
 
     private Integer count;
 
@@ -18,31 +18,31 @@ public class LotForm {
     public LotForm() {
     }
 
-    public LotForm(Integer id, String name,Integer count, BigDecimal price) {
+    public LotForm(int id, int itemId, Integer count, BigDecimal price) {
         this.id = id;
-        this.name = name;
+        this.itemId = itemId;
         this.count = count;
         this.price = price;
     }
 
     public static LotForm fromModel(LotInfoModel lotInfoModel) {
-        return new LotForm(lotInfoModel.getId(), lotInfoModel.getName(), lotInfoModel.getCount(),lotInfoModel.getPrice());
+        return new LotForm(lotInfoModel.getId() ,lotInfoModel.getItemId(),lotInfoModel.getCount(),lotInfoModel.getPrice());
     }
 
-    public Integer getId() {
-        return id;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public BigDecimal getPrice() {
@@ -53,11 +53,11 @@ public class LotForm {
         this.price = price;
     }
 
-    public Integer getCount() {
-        return count;
+    public int getId() {
+        return id;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,8 +1,9 @@
 package com.iredko.wowcraft2.controllers.lot;
 
-import com.iredko.wowcraft2.controllers.stock.StockBrunchInfoModel;
+import com.iredko.wowcraft2.components.stock.Bucket;
+import com.iredko.wowcraft2.components.stock.CraftStock;
+import com.iredko.wowcraft2.dao.external_stock.BucketDAO;
 import com.iredko.wowcraft2.service.LotManager;
-import com.iredko.wowcraft2.service.StockBrunchManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,11 +19,11 @@ import javax.validation.Valid;
 public class LotController {
 
     private LotManager lotManager;
-    private StockBrunchManager stockBrunchManager;
+    private BucketDAO bucketDAO;
 
-    public LotController(LotManager lotManager, StockBrunchManager stockBrunchManager) {
+    public LotController(LotManager lotManager, BucketDAO bucketDAO) {
         this.lotManager = lotManager;
-        this.stockBrunchManager = stockBrunchManager;
+        this.bucketDAO = bucketDAO;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -73,9 +74,16 @@ public class LotController {
             return modelAndView;
         }
         LotInfoModel lot = lotManager.findById(id);
-        stockBrunchManager.insert(StockBrunchInfoModel.fromLotModel(lot));
+        addLotToStock(lot);
         lotManager.delete(lot);
         modelAndView.setViewName("redirect:/lots");
         return modelAndView;
+    }
+
+    private void addLotToStock(LotInfoModel lot) {
+        CraftStock craftStock = bucketDAO.getStock();
+        Bucket bucket = new Bucket(lot.getItemId(), lot.getPrice());
+        craftStock.deposit(bucket, lot.getCount());
+        bucketDAO.saveStock(craftStock);
     }
 }

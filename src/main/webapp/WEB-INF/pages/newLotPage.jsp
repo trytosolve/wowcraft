@@ -4,9 +4,9 @@
            method="post">
     <table>
         <tr>
-            <td>Name:</td>
-            <td><form:input id="name" path="name"/></td>
-            <td><form:errors path="name"/></td>
+            <td>Item Id:</td>
+            <td><form:input id="itemId" path="itemId"/></td>
+            <td><form:errors path="itemId"/></td>
         </tr>
         <tr>
             <td>Count:</td>

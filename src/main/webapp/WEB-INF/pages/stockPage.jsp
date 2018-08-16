@@ -14,40 +14,29 @@
                 <div>Id</div>
             </td>
             <td>
-                <div>Name</div>
+                <div>Price</div>
             </td>
             <td>
                 <div>Count</div>
             </td>
-            <td>
-                <div>Brunch Price</div>
-            </td>
-            <td>
-                <div>
-                    Price for one
-                </div>
-            </td>
         </tr>
-        <c:forEach items="${allStockBranches}" var="brunch">
+        <c:forEach items="${leftovers}" var="leftover">
             <tr>
                 <td>
-                    <div>${brunch.id}</div>
+                    <div>${leftover.itemId}</div>
                 </td>
-                <td>
-                    <div>${brunch.name}</div>
-                </td>
-                <td>
-                    <div>${brunch.count}</div>
-                </td>
-                <td>
-                    <div>${brunch.price}</div>
-                </td>
-                <td>
-                    <div>${brunch.priceForOne}</div>
-                </td>
+                <c:forEach items="${leftover.buckets}" var="bucketLeftover">
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>${bucketLeftover.bucket.price}</td>
+                                    <td>${bucketLeftover.itemCount}</td>
+                                </tr>
+                            </table>
+                        </td>
+                </c:forEach>
             </tr>
-        </c:forEach>
-    </form:form>
+        </c:forEach></form:form>
 </table>
 <div>
     <a href="/recipes">Recipes</a>

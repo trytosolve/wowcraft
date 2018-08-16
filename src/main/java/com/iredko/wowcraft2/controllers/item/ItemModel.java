@@ -11,7 +11,7 @@ public class ItemModel {
 
     private RecipeInfoModel recipe;
 
-    private String name;
+    private int id;
 
     private BigDecimal buyPrice;
 
@@ -19,7 +19,7 @@ public class ItemModel {
 
     public ItemModel(RecipeInfoModel recipe) {
         this.recipe = recipe;
-        this.name = recipe.getName();
+        this.id = recipe.getId();
     }
 
     public static ItemModel fromRecipe(RecipeInfoModel recipe) {
@@ -27,27 +27,28 @@ public class ItemModel {
     }
 
     public BigDecimal calculateBuyPrice(AuctionInfo auctionInfo) {
-        return auctionInfo.averagePriceByName(name);
+        return auctionInfo.averagePriceById(id);
     }
 
     public BigDecimal calculateBuyCraft(AuctionInfo auctionInfo) {
         Map<ReagentInfoModel,Integer> reagentsInfoMap = recipe.getReagenCountMap();
         BigDecimal price = new BigDecimal(0);
         for (Map.Entry<ReagentInfoModel, Integer> entry : reagentsInfoMap.entrySet()) {
-            if (auctionInfo.averagePriceByName(entry.getKey().getName()) == null) {
+            if (auctionInfo.averagePriceById(entry.getKey().getId()) == null) {
                 return null;
             }
-            price = price.add(auctionInfo.averagePriceByName(entry.getKey().getName()).multiply(new BigDecimal(entry.getValue())));
+            price = price.add(auctionInfo.averagePriceById(entry.getKey().getId()).multiply(new BigDecimal(entry.getValue())));
         }
         return price;
     }
 
-    public String getName() {
-        return name;
+
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public BigDecimal getBuyPrice() {
