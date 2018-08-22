@@ -29,13 +29,17 @@ public class Bucket {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Bucket bucket = (Bucket) o;
-        return itemId == bucket.itemId &&
-                Objects.equals(price, bucket.price);
+
+        if (itemId != bucket.itemId) return false;
+        return price != null ? price.equals(bucket.price) : bucket.price == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, price);
+        int result = itemId;
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        return result;
     }
 }

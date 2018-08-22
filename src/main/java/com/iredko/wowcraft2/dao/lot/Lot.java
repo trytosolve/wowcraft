@@ -19,7 +19,7 @@ public class Lot {
     private Integer id;
 
     @Column(name = "item_id")
-    private int itemId;
+    private Integer itemId;
 
     @Column(name = "count")
     private Integer count;
@@ -30,7 +30,14 @@ public class Lot {
     public Lot() {
     }
 
-    public Lot(int id,int itemId, Integer count, BigDecimal price) {
+    public Lot(Integer itemId, Integer count, BigDecimal price) {
+        this.itemId = itemId;
+        this.count = count;
+        this.price = price;
+    }
+
+    public Lot(Integer id,Integer itemId, Integer count, BigDecimal price) {
+        this.id = id;
         this.itemId = itemId;
         this.count = count;
         this.price = price;
@@ -48,11 +55,11 @@ public class Lot {
         this.id = id;
     }
 
-    public int getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 

@@ -11,3 +11,6 @@
 .stock_table tr {
     border: 0px;
 }
+.bucket {
+    display: block;
+}

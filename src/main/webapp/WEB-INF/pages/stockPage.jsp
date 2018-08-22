@@ -14,10 +14,7 @@
                 <div>Id</div>
             </td>
             <td>
-                <div>Price</div>
-            </td>
-            <td>
-                <div>Count</div>
+                <div>Price/Count</div>
             </td>
         </tr>
         <c:forEach items="${leftovers}" var="leftover">
@@ -25,16 +22,16 @@
                 <td>
                     <div>${leftover.itemId}</div>
                 </td>
+                <td>
                 <c:forEach items="${leftover.buckets}" var="bucketLeftover">
-                        <td>
-                            <table>
+                            <table class="bucket">
                                 <tr>
                                     <td>${bucketLeftover.bucket.price}</td>
                                     <td>${bucketLeftover.itemCount}</td>
                                 </tr>
                             </table>
-                        </td>
                 </c:forEach>
+                </td>
             </tr>
         </c:forEach></form:form>
 </table>

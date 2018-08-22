@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 public class LotInfoModel {
 
-    private int id;
+    private Integer id;
 
-    private int itemId;
+    private Integer itemId;
 
     private Integer count;
 
@@ -17,7 +17,7 @@ public class LotInfoModel {
     public LotInfoModel() {
     }
 
-    public LotInfoModel(int id, int itemId, Integer count, BigDecimal price) {
+    public LotInfoModel(Integer id, Integer itemId, Integer count, BigDecimal price) {
         this.id = id;
         this.itemId = itemId;
         this.count = count;
@@ -32,12 +32,19 @@ public class LotInfoModel {
         return new LotInfoModel(lotForm.getId() ,lotForm.getItemId(),lotForm.getCount(),lotForm.getPrice());
     }
 
+    public Integer getId() {
+        return id;
+    }
 
-    public int getItemId() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
@@ -55,13 +62,5 @@ public class LotInfoModel {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

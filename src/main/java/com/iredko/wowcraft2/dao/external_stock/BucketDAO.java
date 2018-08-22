@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
@@ -35,9 +36,22 @@ public class BucketDAO {
     public void saveStock(CraftStock craftStock) {
         for (ItemLeftover itemLeftover : craftStock.getItemLeftovers()) {
             for (BucketLeftover bucketLeftover : itemLeftover.getBuckets()) {
-                DBBucket bucket = new DBBucket(bucketLeftover.getBucket().getItemId(),
-                        bucketLeftover.getBucket().getPrice(), bucketLeftover.getItemCount());
-                merge(bucket);
+                Query query = this.entityManager.createQuery("SELECT bucket FROM DBBucket bucket" +
+                        " WHERE bucket.itemId=?1 AND bucket.price=?2",DBBucket.class);
+                query.setParameter(1, bucketLeftover.getBucket().getItemId());
+                query.setParameter(2, bucketLeftover.getBucket().getPrice());
+                List<DBBucket> buckets = query.getResultList();
+                if (query.getResultList().size() == 0) {
+                    DBBucket bucket = new DBBucket(null, bucketLeftover.getBucket().getItemId(),
+                            bucketLeftover.getBucket().getPrice(), bucketLeftover.getItemCount());
+                    merge(bucket);
+                }
+                if (query.getResultList().size() == 1) {
+                    DBBucket bucket = (DBBucket) query.getSingleResult();
+                    bucket.setItemCount(bucketLeftover.getItemCount());
+                } else {
+                    throw new RuntimeException("Bucket has more than one result");
+                }
             }
         }
     }
