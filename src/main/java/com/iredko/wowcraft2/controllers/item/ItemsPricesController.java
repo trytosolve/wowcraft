@@ -3,9 +3,7 @@ package com.iredko.wowcraft2.controllers.item;
 import com.iredko.wowcraft2.controllers.lot.AuctionInfo;
 import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
 import com.iredko.wowcraft2.service.LotManager;
-import com.iredko.wowcraft2.service.ReagentManager;
 import com.iredko.wowcraft2.service.RecipeManager;
-import org.apache.tools.ant.taskdefs.Get;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +36,6 @@ public class ItemsPricesController {
         AuctionInfo auctionInfo = new AuctionInfo(lotManager.findAll());
         for (RecipeInfoModel recipe : recipeManager.findAll()){
             ItemModel item = ItemModel.fromRecipe(recipe);
-            item.setBuyPrice(item.calculateBuyPrice(auctionInfo));
             item.setCraftPrice(item.calculateBuyCraft(auctionInfo));
             listItems.add(item);
         }

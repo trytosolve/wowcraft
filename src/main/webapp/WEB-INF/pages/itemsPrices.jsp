@@ -7,6 +7,7 @@
     <title>Items</title>
 </head>
 <body>
+<h2>The cost of manufacturing based on the average auction price</h2>
 <table class="recipe_table">
     <form:form method="post">
         <tr>
@@ -16,17 +17,11 @@
             <td>
                 <div>Buy Price</div>
             </td>
-            <td>
-                <div>Craft Price</div>
-            </td>
         </tr>
         <c:forEach items="${items}" var="item">
             <tr>
                 <td>
                     <div>${item.id}</div>
-                </td>
-                <td>
-                    <div>${item.buyPrice}</div>
                 </td>
                 <td>
                     <div>${item.craftPrice}</div>
