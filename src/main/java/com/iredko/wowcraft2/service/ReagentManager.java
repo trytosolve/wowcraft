@@ -51,4 +51,9 @@ public class ReagentManager {
     public boolean exist(Integer id) {
         return reagentDAO.exist(id);
     }
+
+    @Transactional
+    public ReagentInfoModel findByName(String name) {
+        return ReagentInfoModel.fromEntity(reagentDAO.findByName(name));
+    }
 }

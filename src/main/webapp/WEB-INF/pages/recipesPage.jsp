@@ -36,15 +36,13 @@
                 </td>
                 <td><a href="${pageContext.request.contextPath}/recipes/edit?id=${recipe.id}">edit</a></td>
                 <td><a href="${pageContext.request.contextPath}/recipes/delete?id=${recipe.id}">delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/recipes/craft_from_stock?id=${recipe.id}">craft from stock</a></td>
             </tr>
         </c:forEach>
     </form:form>
 </table>
 <div>
     <a href="/reagents">Reagents</a>
-</div>
-<div>
-    <a href="/items_prices">Items Prices</a>
 </div>
 <div>
     <a href="/lots">Lots</a>

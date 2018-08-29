@@ -1,9 +1,12 @@
 package com.iredko.wowcraft2.dao.reagent;
 
+import com.iredko.wowcraft2.components.stock.Bucket;
+import com.iredko.wowcraft2.dao.external_stock.DBBucket;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -42,5 +45,19 @@ public class ReagentDAO {
     public boolean exist(Integer id) {
         Reagent entity = this.entityManager.find(Reagent.class,id);
         return entity != null;
+    }
+
+    public Reagent findByName(String name) {
+        Query query = this.entityManager.createQuery("SELECT reagent FROM Reagent reagent" +
+                " WHERE reagent.name=?1",Reagent.class);
+        query.setParameter(1, name);
+        if (query.getResultList().size() == 0) {
+            throw new RuntimeException("Item not found");
+        }
+        if (query.getResultList().size() == 1) {
+            return (Reagent) query.getSingleResult();
+        } else {
+            throw new RuntimeException("Has more than one object with this name");
+        }
     }
 }

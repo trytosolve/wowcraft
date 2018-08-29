@@ -11,9 +11,6 @@
     <a href="/reagents">Reagents</a>
 </div>
 <div>
-    <a href="/items_prices">Items Prices</a>
-</div>
-<div>
     <a href="/lots">Lots</a>
 </div>
 <div>
