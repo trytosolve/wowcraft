@@ -61,4 +61,9 @@ public class RecipeManager {
         }
         return recipeInfoModels;
     }
+
+    @Transactional
+    public boolean existByName(String name) {
+        return recipeDAO.existByName(name);
+    }
 }

@@ -47,6 +47,20 @@ public class ReagentDAO {
         return entity != null;
     }
 
+    public boolean existByName(String name) {
+        Query query = this.entityManager.createQuery("SELECT reagent FROM Reagent reagent" +
+                " WHERE reagent.name=?1",Reagent.class);
+        query.setParameter(1, name);
+        if (query.getResultList().size() == 0) {
+            return false;
+        }
+        if (query.getResultList().size() == 1) {
+            return true;
+        } else {
+            throw new RuntimeException("Has more than one object with this name");
+        }
+    }
+
     public Reagent findByName(String name) {
         Query query = this.entityManager.createQuery("SELECT reagent FROM Reagent reagent" +
                 " WHERE reagent.name=?1",Reagent.class);

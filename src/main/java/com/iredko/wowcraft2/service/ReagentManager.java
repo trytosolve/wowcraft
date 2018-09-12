@@ -53,6 +53,11 @@ public class ReagentManager {
     }
 
     @Transactional
+    public boolean existByName(String name) {
+        return reagentDAO.existByName(name);
+    }
+
+    @Transactional
     public ReagentInfoModel findByName(String name) {
         return ReagentInfoModel.fromEntity(reagentDAO.findByName(name));
     }

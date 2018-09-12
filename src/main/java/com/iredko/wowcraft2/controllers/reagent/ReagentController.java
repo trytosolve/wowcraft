@@ -46,6 +46,7 @@ public class ReagentController {
         if (result.hasErrors()) {
             return new ModelAndView("newReagentPage");
         }
+        checkName(reagentForm.getName());
         reagentManager.insert(ReagentInfoModel.fromForm(reagentForm));
         return new ModelAndView("redirect:/reagents");
     }
@@ -84,6 +85,7 @@ public class ReagentController {
         if (result.hasErrors()) {
             return new ModelAndView("editReagentPage");
         }
+        checkName(reagentForm.getName());
         reagentManager.merge(ReagentInfoModel.fromForm(reagentForm));
         return new ModelAndView("redirect:/reagents");
     }
@@ -96,8 +98,16 @@ public class ReagentController {
             modelAndView.addObject("usagesList", usageList);
             return true;
         }
+        if (recipeManager.existByName(reagent.getName())) {
+            throw new RuntimeException("This reagent can craft by recipe, delete recipe before reagent");
+        }
         return false;
     }
 
-
+    private boolean checkName(String name) {
+        if (reagentManager.existByName(name)) {
+            throw new RuntimeException("Name already used");
+        }
+        return false;
+    }
 }

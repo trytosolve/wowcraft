@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -51,5 +52,19 @@ public class RecipeDAO {
     public boolean exist(Integer id) {
         Recipe entity = this.entityManager.find(Recipe.class,id);
         return entity != null;
+    }
+
+    public boolean existByName(String name) {
+        Query query = this.entityManager.createQuery("SELECT recipe FROM Recipe recipe" +
+                " WHERE recipe.name=?1",Recipe.class);
+        query.setParameter(1, name);
+        if (query.getResultList().size() == 0) {
+            return false;
+        }
+        if (query.getResultList().size() == 1) {
+            return true;
+        } else {
+            throw new RuntimeException("Has more than one object with this name");
+        }
     }
 }

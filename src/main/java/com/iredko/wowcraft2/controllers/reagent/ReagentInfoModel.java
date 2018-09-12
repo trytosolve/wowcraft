@@ -2,14 +2,19 @@ package com.iredko.wowcraft2.controllers.reagent;
 
 import com.iredko.wowcraft2.dao.reagent.Reagent;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class ReagentInfoModel {
 
     private Integer id;
 
+    @NotNull
+    @Size(min=2,max = 15,message = "Name size must be between 2 and 15")
     private String name;
 
+    @NotNull
     private BigDecimal sellPrice;
 
     public ReagentInfoModel() {

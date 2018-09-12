@@ -59,6 +59,7 @@ public class RecipeController {
             modelAndView.setViewName("newRecipePage");
             return modelAndView;
         }
+        checkName(recipeForm.getName());
         recipeManager.merge(RecipeInfoModel.fromForm(recipeForm, reagentManager.findAll()));
         reagentManager.merge(ReagentInfoModel.fromForm(new ReagentForm(recipeForm.getId(), recipeForm.getName(),
                 recipeForm.getSellPrice())));
@@ -93,6 +94,7 @@ public class RecipeController {
             modelAndView.setViewName("editRecipePage");
             return modelAndView;
         }
+        checkName(recipeForm.getName());
         recipeManager.merge(RecipeInfoModel.fromForm(recipeForm, reagentManager.findAll()));
         return new ModelAndView("redirect:/recipes");
     }
@@ -131,4 +133,10 @@ public class RecipeController {
         return craftMap;
     }
 
+    private boolean checkName(String name) {
+        if (recipeManager.existByName(name)) {
+            throw new RuntimeException("Name already used");
+        }
+        return false;
+    }
 }
