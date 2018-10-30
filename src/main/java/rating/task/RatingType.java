@@ -1,7 +1,7 @@
 package rating.task;
 
 public enum RatingType {
-    LONG("LONG", 1), SHORT("SHORT",2), INVALID("INVALID TYPE",null);
+    LONG("LONG", 1), SHORT("SHORT",2), INVALID("INVALID TYPE",3);
 
     private String description;
     private Integer priority;
