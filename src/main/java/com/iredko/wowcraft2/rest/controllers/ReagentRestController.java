@@ -3,12 +3,10 @@ package com.iredko.wowcraft2.rest.controllers;
 
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
 import com.iredko.wowcraft2.controllers.recipe.RecipeInfoModel;
-import com.iredko.wowcraft2.dao.recipe.Recipe;
 import com.iredko.wowcraft2.service.ReagentManager;
 import com.iredko.wowcraft2.service.RecipeManager;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,7 +15,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class ReagentRestController {
-
 
     private ReagentManager reagentManager;
     private RecipeManager recipeManager;
@@ -45,6 +42,7 @@ public class ReagentRestController {
         if (result.hasErrors()) {
             throw new RuntimeException(getErrors(result));
         }
+        checkName(reagentInfoModel.getName());
         reagentManager.insert(reagentInfoModel);
     }
 
@@ -54,6 +52,7 @@ public class ReagentRestController {
         if (result.hasErrors()) {
             throw new RuntimeException(getErrors(result));
         }
+        checkName(reagentInfoModel.getName());
         reagentManager.merge(reagentInfoModel);
     }
 
@@ -80,6 +79,13 @@ public class ReagentRestController {
         if (recipeManager.existByName(reagent.getName())) {
             throw new RuntimeException("This reagent can craft by recipe, delete recipe before reagent");
         }
+    }
+
+    private boolean checkName(String name) {
+        if (reagentManager.existByName(name)) {
+            throw new RuntimeException("Name already used");
+        }
+        return false;
     }
 
     private String getErrors(BindingResult result) {

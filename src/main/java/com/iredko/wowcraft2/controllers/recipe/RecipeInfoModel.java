@@ -1,5 +1,6 @@
 package com.iredko.wowcraft2.controllers.recipe;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.iredko.wowcraft2.dao.recipe.Recipe;
 import com.iredko.wowcraft2.dao.recipe_reagent.RecipeReagent;
 import com.iredko.wowcraft2.controllers.reagent.ReagentInfoModel;
@@ -15,6 +16,7 @@ public class RecipeInfoModel {
 
     private String name;
 
+    @JsonSerialize(keyUsing = ReagentInfoModelSerializer.class)
     private Map<ReagentInfoModel,Integer> reagenCountMap;
 
     private BigDecimal sellPrice;

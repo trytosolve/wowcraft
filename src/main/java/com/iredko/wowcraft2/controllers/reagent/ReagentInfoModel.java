@@ -1,5 +1,4 @@
 package com.iredko.wowcraft2.controllers.reagent;
-
 import com.iredko.wowcraft2.dao.reagent.Reagent;
 
 import javax.validation.constraints.NotNull;
