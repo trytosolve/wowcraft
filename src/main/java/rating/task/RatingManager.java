@@ -28,7 +28,7 @@ public class RatingManager {
     }
 
     private static BinaryOperator<Rating> getLessRatingOperator() {
-        Comparator<Rating> ratingComparator = Comparator.comparing(rating -> rating.getRatingType());
+        Comparator<Rating> ratingComparator = Comparator.comparing(rating -> rating.getRatingType().getPriority());
         ratingComparator = ratingComparator.thenComparing(Comparator.comparingInt(rating ->
                 rating.getRatingValue().getValue()));
         return BinaryOperator.minBy(ratingComparator);
