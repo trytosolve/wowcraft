@@ -11,27 +11,26 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        String path = new String("D://Books/12");
+        String path = "D://Books/12";
         getStatistic(path);
 
     }
 
-    public static void getStatistic(String path) throws IOException {
+    private static void getStatistic(String path) throws IOException {
         Map<Date,Long> lineMap = Files.walk(Paths.get(path))
                 .filter(Files::isRegularFile)
-                .flatMap(f -> readLines(f))
-                .map(l -> getTimeSubstr(l))
-                .map(l -> convertToDate(l))
+                .flatMap(Test::readLines)
+                .map(Test::getTimeSubstr)
+                .map(Test::convertToDate)
                 .collect(Collectors.groupingBy(l -> l, Collectors.counting()));
-
-        lineMap.entrySet().stream().forEach(System.out::println);
+        lineMap.entrySet().forEach(System.out::println);
     }
 
     private static Date convertToDate(String l)  {
         try {
             return new SimpleDateFormat("[dd-MM-yyyy]").parse(l);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -43,7 +42,7 @@ public class Test {
     public static void readWarn(String path) throws IOException {
         Files.walk(Paths.get(path))
                 .filter(Files::isRegularFile)
-                .flatMap(f -> readLines(f))
+                .flatMap(Test::readLines)
                 .filter(l -> l.startsWith("WARN"))
                 .forEach(System.out::println);
     }
@@ -52,7 +51,7 @@ public class Test {
         try {
             return Files.lines(f);
         } catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
